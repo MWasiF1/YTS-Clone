@@ -3,15 +3,13 @@
     transition: border-color 0.3s ease-in-out;
   }
   
-  .movie-card img {
-    border-radius: 0.5rem;
-  }
 .mrg{
   padding-top: 40px;
 }
+
   .brd{
    
-    border-width: 5.5px;
+    border-width: 4px;
   }
   .movie-card:hover {
     border-color: #32cd32; /* Light green color same as the logo */
