@@ -1,0 +1,78 @@
+.movie-card {
+    border-radius: 0.75rem;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .movie-card img {
+    border-radius: 0.5rem;
+  }
+.mrg{
+  padding-top: 40px;
+}
+  .brd{
+   
+    border-width: 5.5px;
+  }
+  .movie-card:hover {
+    border-color: #32cd32; /* Light green color same as the logo */
+  }
+  .relative {
+    position: relative;
+  }
+  
+  .transition-transform {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .transform:hover {
+    transform: scale(1.05);
+  }
+  
+  .transition-opacity {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .opacity-0 {
+    opacity: 0;
+  }
+  
+  .opacity-100 {
+    opacity: 1;
+  }
+  
+  .bg-black {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+ 
+
+  .movie-card {
+
+    position: relative;
+    overflow: hidden; /* Ensure content stays within bounds */
+  }
+  
+  .movie-details {
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .movie-card:hover .movie-details {
+    opacity: 1; /* Show on hover */
+  }
+  
+  .movie-card img {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .movie-card:hover img {
+    opacity: 0.3; /* Fade out image and basic info */
+  }
+
+  .movie-card:hover h3,
+  .movie-card:hover p {
+    margin: 0;
+  }
+    
+  
