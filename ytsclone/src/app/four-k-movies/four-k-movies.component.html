@@ -1,1 +1,25 @@
-<p>four-k-movies works!</p>
+<div class="container mx-auto px-4 py-6">
+    <h1 class="text-2xl font-bold text-white mb-6">4K Movies</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div *ngFor="let movie of movies" class="movie-card border-4 rounded-lg border-white hover:border-green-500 transition-all duration-300">
+        <img [src]="movie.medium_cover_image" alt="{{ movie.title }}" class="w-full rounded-md object-cover">
+        <div class="movie-details absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-center opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg">
+          <svg class="absolute top-10 right-4 h-8 w-8 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27l4.15 2.18-1.06-4.61L20 10.1l-4.71-.39L12 5.5 8.71 9.71 4 10.1l3.91 4.74-1.06 4.61L12 17.27z" />
+          </svg>
+          <p class="text-white text-lg font-bold my-2">Rating: {{ movie.rating }}</p>
+          <div class="text-white text-sm font-bold">
+            <div *ngFor="let genre of movie.genres" class="my-1">{{ genre }}</div>
+          </div>
+          <div class="bg-green-500 text-white font-bold px-4 py-2 mt-4 rounded-lg">
+            <button>View Details</button>
+          </div>
+        </div>
+        <div class="mt-2">
+          <h3 class="text-white hover:text-gray-400 hover:cursor-pointer mt-2 font-bold">{{ movie.title }}</h3>
+          <p class="text-gray-400 text-sm">{{ movie.year }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

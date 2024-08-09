@@ -1,4 +1,3 @@
-// src/app/browse/browse.component.ts
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 
@@ -8,16 +7,21 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./browse.component.css']
 })
 export class BrowseComponent implements OnInit {
+  
   movies: any[] = [];
 
+  // Injecting the MovieService to fetch movie data
   constructor(private movieService: MovieService) { }
 
+  // Lifecycle hook runs after component's initialization
   ngOnInit(): void {
-    this.fetchMovies();
+    this.fetchMovies(); 
   }
+
 
   fetchMovies(): void {
     this.movieService.getMovies().subscribe(data => {
+      // Assign the fetched movie data to the movies array
       this.movies = data.data.movies;
     });
   }

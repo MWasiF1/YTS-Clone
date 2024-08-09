@@ -1,17 +1,16 @@
-// src/app/shared/shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MovieCardComponent } from './movie-card/movie-card.component'; 
 
 @NgModule({
   declarations: [
-    MovieCardComponent
+    MovieCardComponent 
   ],
   imports: [
-    CommonModule
+    CommonModule 
   ],
   exports: [
-    MovieCardComponent  // Export MovieCardComponent
+    MovieCardComponent  
   ]
 })
-export class SharedModule { }
+export class SharedModule { } // Define and export the SharedModule class

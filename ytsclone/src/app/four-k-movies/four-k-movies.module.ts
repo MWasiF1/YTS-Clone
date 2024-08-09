@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FourKMoviesRoutingModule } from './four-k-movies-routing.module';
-
+import { FourKMoviesComponent } from './four-k-movies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FourKMoviesComponent
+  ],
   imports: [
     CommonModule,
-    FourKMoviesRoutingModule
+    HttpClientModule
+  ],
+  exports: [
+    FourKMoviesComponent
   ]
 })
 export class FourKMoviesModule { }

@@ -1,19 +1,18 @@
-// src/app/home/home.module.ts
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';  // Import SharedModule
-
+import { NgModule } from '@angular/core';  
+import { CommonModule } from '@angular/common';  // CommonModule provides common directives like ngIf and ngFor
+import { HomeComponent } from './home.component';  
+import { RouterModule } from '@angular/router';  
+import { SharedModule } from '../shared/shared.module';  
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent  
   ],
   imports: [
-    CommonModule,
-    RouterModule.forChild([{path:'',component: HomeComponent}]),
-    SharedModule,  // Import SharedModule here
-  ]
+    CommonModule,  
+    RouterModule.forChild([{ path: '', component: HomeComponent }]),  
+    SharedModule,  
+  ],
+  exports: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule { }  

@@ -1,93 +1,101 @@
-
+/* Styling for the navigation bar */
 nav {
-  height: 60px;
-        padding-top: 6px;
-    background-color: #141414;
-    border-bottom: 1px solid #2c2c2c;
-    
-    padding-bottom: 4rem;
-  }
-  nav.wdth{
-    width: 10px;
-   
-  }
-  
-  nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
-  
-  nav img {
-    height: 2rem; 
-  }
-  
-  nav .text-white {
-    color: #ffffff;
-  }
-  
-  nav .text-gray-300 {
-    color: #d1d1d1;
-  }
-  
-  nav .hover\:text-white:hover {
-    color: #ffffff;
-  }
-  
-  nav .px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  nav .py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-  
-  nav .rounded-md {
-    border-radius: 0.375rem;
-  }
-  
-  nav .text-sm {
-    font-size: 0.875rem;
-  }
-  
-  nav .font-medium {
-    font-weight: 500;
-  }
-  
-  nav .hidden {
-    display: none;
-  }
-  
-  nav .block {
-    display: block;
-  }
-  
-  nav .md\:hidden {
-    display: none;
-  }
-  
-  nav .md\:flex {
-    display: flex;
-  }
+  height: 60px; 
+  padding-top: 6px; 
+  background-color: #141414; 
+  border-bottom: 1px solid #2c2c2c; 
+  padding-bottom: 4rem; 
+}
 
-  input[type="text"] {
-    width: 240px;
-    height: 40px;
+/* Additional styling for navigation bar with class 'wdth' */
+nav.wdth {
+  width: 10px;
+}
+
+/* Styling for the container inside the navigation bar */
+nav .container {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+  padding: 1rem; 
+}
+
+/* Styling for the logo image inside the navigation bar */
+nav img {
+  height: 2rem; 
+}
+
+nav .text-white {
+  color: #ffffff; 
+}
+
+nav .text-gray-300 {
+  color: #d1d1d1; 
+}
+
+
+nav .hover\:text-white:hover {
+  color: #ffffff; 
+}
+
+nav .px-3 {
+  padding-left: 0.75rem; 
+  padding-right: 0.75rem; 
+}
+
+nav .py-2 {
+  padding-top: 0.5rem; 
+  padding-bottom: 0.5rem; 
+}
+
+nav .rounded-md {
+  border-radius: 0.375rem; 
+}
+
+
+nav .text-sm {
+  font-size: 0.875rem; 
+}
+
+
+nav .font-medium {
+  font-weight: 500; 
+}
+
+
+nav .hidden {
+  display: none; /* Hide elements */
+}
+
+
+nav .block {
+  display: block; 
+}
+
+/* Responsive display classes */
+nav .md\:hidden {
+  display: none; /* Hide elements on medium and larger screens */
+}
+
+nav .md\:flex {
+  display: flex; /* Display elements as flexbox on medium and larger screens */
+}
+
+input[type="text"] {
+  width: 240px; 
+  height: 40px; 
+}
+
+.nz-input-group {
+  width: 300px; 
+}
+
+/* Media query for responsive design */
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: none; 
   }
-  
-  .nz-input-group {
-    width: 300px;
+  .md\:flex {
+    display: flex; 
   }
-  
-  @media (min-width: 768px) {
-    .md\:hidden {
-      display: none;
-    }
-    .md\:flex {
-      display: flex;
-    }
-  }
-  
+}

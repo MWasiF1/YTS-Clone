@@ -1,76 +1,89 @@
+
 .movie-card {
-    border-radius: 0.75rem;
-    transition: border-color 0.3s ease-in-out;
-  }
-  
-.mrg{
-  padding-top: 40px;
+  border-radius: 0.75rem; /* Rounds the corners of the movie card */
+  transition: border-color 0.3s ease-in-out; /* Smooth transition for border color changes */
 }
 
-  .brd{
-   
-    border-width: 4px;
-  }
-  .movie-card:hover {
-    border-color: #32cd32; /* Light green color same as the logo */
-  }
-  .relative {
-    position: relative;
-  }
-  
-  .transition-transform {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .transform:hover {
-    transform: scale(1.05);
-  }
-  
-  .transition-opacity {
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .opacity-0 {
-    opacity: 0;
-  }
-  
-  .opacity-100 {
-    opacity: 1;
-  }
-  
-  .bg-black {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
- 
+/* Margin at the top of the movie card container */
+.mrg {
+  padding-top: 40px; /* Adds padding to the top */
+}
 
-  .movie-card {
+/* Custom border width for movie cards */
+.brd {
+  border-width: 4px;
+}
 
-    position: relative;
-    overflow: hidden; /* Ensure content stays within bounds */
-  }
-  
-  .movie-details {
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.75);
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .movie-card:hover .movie-details {
-    opacity: 1; /* Show on hover */
-  }
-  
-  .movie-card img {
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .movie-card:hover img {
-    opacity: 0.3; /* Fade out image and basic info */
-  }
 
-  .movie-card:hover h3,
-  .movie-card:hover p {
-    margin: 0;
-  }
-    
-  
+.movie-card:hover {
+  border-color: #32cd32;
+}
+
+/* Utility class for setting relative positioning */
+.relative {
+  position: relative; /* Sets positioning context for child elements */
+}
+
+/* Transition effect for scaling on hover */
+.transition-transform {
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling effects */
+}
+
+
+.transform:hover {
+  transform: scale(1.05); /* Slightly enlarges the element on hover */
+}
+
+/* Transition effect for opacity changes */
+.transition-opacity {
+  transition: opacity 0.3s ease-in-out; 
+}
+
+
+.opacity-0 {
+  opacity: 0; 
+}
+
+
+.opacity-100 {
+  opacity: 1; 
+}
+
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.6); 
+}
+
+
+.movie-card {
+  position: relative; 
+  overflow: hidden; 
+}
+
+/* Details overlay on the movie card */
+.movie-details {
+  z-index: 10; /* Places overlay above other elements */
+  background: rgba(0, 0, 0, 0.75); 
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; 
+}
+
+.movie-card:hover .movie-details {
+  opacity: 1; 
+}
+
+/* Transition effect for image opacity */
+.movie-card img {
+  transition: opacity 0.3s ease-in-out; 
+}
+
+/* Fade out image and basic info on hover */
+.movie-card:hover img {
+  opacity: 0.3; 
+}
+
+/* Remove margin from title and description on hover */
+.movie-card:hover h3,
+.movie-card:hover p {
+  margin: 0; 
+}

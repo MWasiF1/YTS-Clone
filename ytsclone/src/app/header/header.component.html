@@ -1,39 +1,49 @@
 <nav class="bg-gray-900 border-b border-gray-800">
   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
     <div class="flex items-center">
-      <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YTS Logo"  class="h-8 ">
+      <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YTS Logo" class="h-8">
     </div>
-    <div class="hidden md:flex space-x-4  items-center">
+
+    <div class="hidden md:flex space-x-4 items-center">
       <div class="relative">
-        <input type="text" placeholder="Search movies..." class=" bg-black text-gray-400 text-base font-medium rounded-full border-2 border-gray-400 px-10 py-2  h-8" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()">
+        <input type="text" placeholder="Search movies..." class="bg-black text-gray-400 text-base font-medium rounded-full border-2 border-gray-400 px-10 py-2 h-8" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()">
+        <!-- Search icon positioned inside the input field -->
         <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-base font-bold text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25" />
         </svg>
       </div>
-      
+
+      <!-- Navigation links with hover effects -->
       <a href="/home" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Home</a>
       <a href="/four-k-movies" class="text-green-500 px-2 py-2 rounded-md text-base font-medium">4K</a>
       <a href="/browse" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Browse Movies</a>
       <a href="/trending" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Trending</a>
       <a href="/login" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Login | Register</a>
-
     </div>
+
+    <!-- Mobile menu button, visible only on small screens -->
     <div class="md:hidden">
       <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+        <!-- Menu icon for mobile view -->
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
     </div>
   </div>
+
+  <!-- Mobile menu content, hidden by default -->
   <div id="mobile-menu" class="md:hidden">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <!-- Mobile navigation links with hover effects -->
       <a href="/home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-      <a href="/four-k-movies" class="text-green-500  px-3 py-2 rounded-md text-base font-medium">4K</a>
+      <a href="/four-k-movies" class="text-green-500 px-3 py-2 rounded-md text-base font-medium">4K</a>
       <a href="/browse" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Browse Movies</a>
       <a href="/trending" class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-base font-medium">Trending</a>
       <a href="/login" class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium">Login</a>
       <a href="/register" class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium">Register</a>
+
+      <!-- Search bar for mobile view -->
       <div class="relative">
         <input type="text" placeholder="Search movies..." class="bg-gray-800 text-white rounded-md px-3 py-2 text-sm w-full" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()">
         <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

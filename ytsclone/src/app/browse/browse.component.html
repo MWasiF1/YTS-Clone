@@ -1,5 +1,13 @@
 <div class="container mx-auto px-4 py-6 #1d1d1d">
+  <!-- Container for the movie cards, centered horizontally -->
+  
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <!-- Grid layout for displaying movie cards -->
+    <!-- grid-cols-1: 1 column on small screens -->
+
     <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+    <!-- Loops through the movies array and renders an app-movie-card component for each movie -->
+    <!-- [movie]="movie": Binds the movie data to the app-movie-card component -->
   </div>
 </div>
+
