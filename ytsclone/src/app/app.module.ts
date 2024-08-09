@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { BrowseModule } from './browse/browse.module';
 import { SharedModule } from './shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 registerLocaleData(en);
@@ -32,6 +33,7 @@ registerLocaleData(en);
     BrowseModule,
     SharedModule,
     FormsModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
   ],
   providers: [

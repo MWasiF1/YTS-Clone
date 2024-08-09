@@ -22,21 +22,28 @@ export class MovieService {
   /**
    * Searches for movies based on a query term.
    * @param query - The search term to filter movies
-   * @returns 
+   * @returns An Observable containing the search results
    */
   searchMovies(query: string): Observable<any> {
-    return this.http.get(`https://yts.mx/api/v2/list_movies.json?query_term=${query}`);  // Perform a GET request with the search query
+    const searchUrl = `${this.apiUrl}?query_term=${encodeURIComponent(query)}`;  // Encode the query parameter
+    return this.http.get<any>(searchUrl);  // Perform a GET request with the search query
   }
 
-  
+  /**
+   * Fetches trending movies from the API.
+   * @returns An Observable containing the trending movies data
+   */
   getTrendingMovies(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?sort_by=trending`);  
+    const trendingUrl = `${this.apiUrl}?sort_by=trending`;  
+    return this.http.get<any>(trendingUrl);  // Perform a GET request to fetch trending movies
   }
 
-  
+  /**
+   * Fetches 4K movies from the API.
+   * @returns An Observable containing the 4K movies data
+   */
   get4KMovies(): Observable<any> {
     const fourKUrl = `${this.apiUrl}?quality=2160p`;  
-    return this.http.get<any>(fourKUrl);
+    return this.http.get<any>(fourKUrl);  // Perform a GET request to fetch 4K movies
   }
-
 }

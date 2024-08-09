@@ -1,36 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html', 
-  styleUrls: ['./header.component.css'] 
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  searchQuery: string = ''; // Property to store the search query input by the user
+  searchQuery: string = '';
+  searchResults: any[] = [];
+  showDropdown: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.setupMobileMenuToggle(); // Calls method to set up the mobile menu toggle functionality when component initializes
+    this.setupMobileMenuToggle();
   }
 
   setupMobileMenuToggle(): void {
-    // Gets references to the mobile menu button and the menu itself
     const button = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
-
-    // Adds an event listener to the button to toggle the menu visibility on click
     button?.addEventListener('click', () => {
-      menu?.classList.toggle('hidden'); // Toggles the 'hidden' class to show or hide the menu
+      menu?.classList.toggle('hidden');
     });
   }
 
-  searchMovies(): void {
-    // Checks if the search query is not just whitespace
+  setupSearch(): void {
     if (this.searchQuery.trim()) {
-      // Navigates to the search page with the query as a query parameter
+      this.movieService.searchMovies(this.searchQuery).subscribe(data => {
+        if (data && data.data && data.data.movies) {
+          this.searchResults = data.data.movies;
+          this.showDropdown = true;
+        } else {
+          console.error('Unexpected API response format:', data);
+        }
+      }, error => {
+        console.error('Error fetching movies:', error);
+      });
+    } else {
+      this.searchResults = [];
+      this.showDropdown = false;
+    }
+  }
+
+  searchMovies(): void {
+    if (this.searchQuery.trim()) {
       this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+    }
+  }
+
+  onResultClick(movie: any): void {
+    this.searchQuery = movie.title;
+    this.showDropdown = false;
+    this.router.navigate(['/movie', movie.id]);  // Navigate to the movie detail page
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target.closest('.relative') === null) {
+      this.showDropdown = false;
     }
   }
 }

@@ -90,6 +90,17 @@ input[type="text"] {
   width: 300px; 
 }
 
+.srccr{
+  overflow: hidden;
+    z-index: 9;
+    margin: 0;
+    padding: 0;
+    top: 59px !important;
+    width: 250px !important;
+    text-align: left;
+    position: fixed !important; 
+}
+
 /* Media query for responsive design */
 @media (min-width: 768px) {
   .md\:hidden {

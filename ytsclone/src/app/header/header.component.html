@@ -6,11 +6,38 @@
 
     <div class="hidden md:flex space-x-4 items-center">
       <div class="relative">
-        <input type="text" placeholder="Search movies..." class="bg-black text-gray-400 text-base font-medium rounded-full border-2 border-gray-400 px-10 py-2 h-8" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()">
+        <input 
+          type="text"
+          placeholder="Search movies..."
+          class="bg-black text-gray-400 text-base font-medium rounded-full border-2 border-gray-400 px-10 py-2 h-8"
+          [(ngModel)]="searchQuery"
+          (input)="setupSearch()"
+          (keyup.enter)="searchMovies()"
+        />
         <!-- Search icon positioned inside the input field -->
-        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-base font-bold text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-base font-bold text-gray-500"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25" />
         </svg>
+
+        <!-- Dropdown for search suggestions -->
+        <ul *ngIf="showDropdown" class="absolute z-10 w-full bg-black text-white rounded-md shadow-lg mt-1 max-h-80 overflow-hidden">
+          <li *ngFor="let movie of searchResults.slice(0, 5)" 
+              (click)="onResultClick(movie)"
+              class="px-4 py-2 flex items-center hover:bg-gray-700 cursor-pointer">
+            <img [src]="movie.large_cover_image" alt="{{ movie.title }}" class="w-16 h-24 object-cover rounded-md mr-4">
+            <div class="truncate w-full">
+              <h3 class="text-white text-sm font-semibold truncate">{{ movie.title }}</h3>
+              <p class="text-gray-400 text-xs">{{ movie.year }}</p>
+            </div>
+          </li>
+          <li *ngIf="searchResults.length === 0" class="px-4 py-2 text-gray-500">
+            No results found
+          </li>
+        </ul>
       </div>
 
       <!-- Navigation links with hover effects -->
@@ -45,8 +72,19 @@
 
       <!-- Search bar for mobile view -->
       <div class="relative">
-        <input type="text" placeholder="Search movies..." class="bg-gray-800 text-white rounded-md px-3 py-2 text-sm w-full" [(ngModel)]="searchQuery" (keyup.enter)="searchMovies()">
-        <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <input 
+          type="text"
+          placeholder="Search movies..."
+          class="bg-gray-800 text-white rounded-md px-3 py-2 text-sm w-full"
+          [(ngModel)]="searchQuery"
+          (input)="setupSearch()"
+          (keyup.enter)="searchMovies()"
+        />
+        <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25" />
         </svg>
       </div>
