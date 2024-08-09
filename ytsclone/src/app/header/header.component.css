@@ -1,10 +1,7 @@
 /* Styling for the navigation bar */
 nav {
-  height: 60px; 
-  padding-top: 6px; 
-  background-color: #141414; 
+  height: 60px;   
   border-bottom: 1px solid #2c2c2c; 
-  padding-bottom: 4rem; 
 }
 
 /* Additional styling for navigation bar with class 'wdth' */
@@ -25,16 +22,7 @@ nav img {
   height: 2rem; 
 }
 
-nav .text-white {
-  color: #ffffff; 
-}
-
-nav .text-gray-300 {
-  color: #d1d1d1; 
-}
-
-
-nav .hover\:text-white:hover {
+nav:hover {
   color: #ffffff; 
 }
 
@@ -82,8 +70,8 @@ nav .md\:flex {
 }
 
 input[type="text"] {
-  width: 240px; 
-  height: 40px; 
+  width: 250px; 
+  height: 35px; 
 }
 
 .nz-input-group {

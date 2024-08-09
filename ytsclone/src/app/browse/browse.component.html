@@ -1,17 +1,79 @@
-<div class="container mx-auto px-4 py-6 #1d1d1d">
-  <!-- Container for the movie cards, centered horizontally with padding on the sides and top/bottom -->
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    <!-- Grid layout for displaying movie cards -->
-    <!-- grid-cols-1: 1 column on small screens -->
-    <!-- sm:grid-cols-2: 2 columns on small screens (min-width: 640px) -->
-    <!-- md:grid-cols-3: 3 columns on medium screens (min-width: 768px) -->
-    <!-- lg:grid-cols-4: 4 columns on large screens (min-width: 1024px) -->
-    <!-- gap-4: gap between grid items -->
+<div class="container mx-auto px-4 py-6 bg-[#1d1d1d]">
+  <!-- Search Form -->
+   
+  <div class="mb-6 container h-80 px-4 py-8 bg-[#171717]">
+    <p class="text-[#5a5a5a] pt-4 pl-4 font-bold">Search Term:</p>
+    <form (submit)="applyFilters()">
+      <div class="flex flex-col md:flex-row md:space-x-4 items-center mb-4">
+        <!-- Search Input -->
+        <div class="flex-1 mb-2 mt-8 ml-4 md:mb-0">
+          <input 
+            type="text" 
+            [(ngModel)]="searchQuery" 
+            
+            class="w-full px-3 py-2 rounded  bg-[#1d1d1d] text-gray-400"
+          />
+        </div>
 
-    <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
-    <!-- Loops through the movies array and renders an app-movie-card component for each movie -->
-    <!-- [movie]="movie": Binds the movie data to the app-movie-card component -->
+        <!-- Search Button -->
+        <button 
+          type="submit" 
+          class="px-4 py-2 mt-8 ml-8 bg-green-500 font-bold text-white rounded-lg">
+          Search
+        </button>
+      </div>
+
+      
+      <!-- Filters Section -->
+      <div class="flex flex-wrap py-8 px-4 gap-4">
+        <p class="text-[#5a5a5a] py-1 font-medium">Quality:</p>
+        <select [(ngModel)]="selectedQuality" class="px-3 py-2 rounded  bg-[#1d1d1d] text-gray-400 w-full md:w-auto">
+          
+          <option value="">Quality</option>
+          <option value="480p">480p</option>
+          <option value="720p">720p</option>
+          <option value="1080p">1080p</option>
+          <option value="2160p">3D</option>
+        </select>
+
+        <p class="text-[#5a5a5a] py-1 font-medium">Rating:</p>
+        <select [(ngModel)]="selectedRating" class="px-3 py-2 rounded  bg-[#1d1d1d]  text-gray-400 w-full md:w-auto">
+          <option value="">Rating</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+          <option value="5">5+</option>
+        </select>
+
+        <p class="text-[#5a5a5a] py-1 font-medium">Year:</p>
+        <select [(ngModel)]="selectedYear" class="px-3 py-2 rounded  bg-[#1d1d1d] text-gray-400 w-full md:w-auto">
+          <option value="">Year</option>
+          <!-- Add year options dynamically based on available data -->
+        </select>
+
+
+        <p class="text-[#5a5a5a] py-1 font-medium">Language:</p>
+        <select [(ngModel)]="selectedLanguage" class="px-3 py-2 rounded   bg-[#1d1d1d] text-gray-400 w-full md:w-auto">
+          <option value="">Language</option>
+          <!-- Add language options here -->
+        </select>
+
+
+
+        <p class="text-[#5a5a5a] py-1 font-medium">Qrder By:</p>
+        <select [(ngModel)]="selectedOrderBy" class="px-3 py-2 rounded   bg-[#1d1d1d] text-gray-400 w-full md:w-auto">
+          <option value="">Order By</option>
+          <option value="year">Year</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <!-- Movies List -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <app-movie-card *ngFor="let movie of filteredMovies" [movie]="movie"></app-movie-card>
+    <!-- Use filteredMovies for the displayed list based on applied filters -->
   </div>
 </div>
-
