@@ -50,4 +50,12 @@
   .movie-details .bg-green-500 {
     background-color: #10b981;
   }
+
+  footer{
+    background: #171717;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid #2f2f2f;
+    color: white;
+}
   
