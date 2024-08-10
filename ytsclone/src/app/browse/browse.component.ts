@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-browse',
@@ -18,7 +19,7 @@ export class BrowseComponent implements OnInit {
   selectedLanguage: string = '';
   selectedOrderBy: string = '';
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private router: Router) { } // Inject Router
 
   ngOnInit(): void {
     this.fetchMovies();
@@ -61,5 +62,10 @@ export class BrowseComponent implements OnInit {
 
   onFilterChange(): void {
     this.applyFilters();
+  }
+
+  // Method to navigate to the movie details
+  viewMovieDetails(movieId: number): void {
+    this.router.navigate(['/movie-details', movieId]);
   }
 }

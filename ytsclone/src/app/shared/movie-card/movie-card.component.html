@@ -20,9 +20,12 @@
         </div>
       </div>
 
-      <div class="bg-green-500 text-white font-bold px-4 py-2 mt-4 rounded-lg">
-        <button>View Details</button>
-      </div>
+      <a [routerLink]="['/movie-details', movie.id]" class="bg-green-500 text-white font-bold px-4 py-2 mt-4 rounded-lg inline-block text-center">
+        View Details
+      </a>
+      
+      
+      
     </div>
   </div>
 

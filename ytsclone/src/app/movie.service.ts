@@ -19,6 +19,11 @@ export class MovieService {
     return this.http.get<any>(this.apiUrl);  // Perform a GET request to the API URL and return an Observable
   }
 
+
+  getMovieDetails(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
   /**
    * Searches for movies based on a query term.
    * @param query - The search term to filter movies
@@ -36,6 +41,10 @@ export class MovieService {
   getTrendingMovies(): Observable<any> {
     const trendingUrl = `${this.apiUrl}?sort_by=trending`;  
     return this.http.get<any>(trendingUrl);  // Perform a GET request to fetch trending movies
+  }
+
+  getMovieSuggestions(id: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/movies/${id}/suggestions`);
   }
 
   /**

@@ -5,9 +5,13 @@ import { BrowseComponent } from './browse/browse.component';
 import { SearchComponent } from './search/search.component';
 import { TrendingMoviesComponent } from './trending-movies/trending-movies.component';
 import { FourKMoviesComponent } from './four-k-movies/four-k-movies.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 const routes: Routes = [
+
+  { path: 'movie-details/:id', component: MovieDetailsComponent },
+  
   // Redirect the empty path to the 'home' route
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   

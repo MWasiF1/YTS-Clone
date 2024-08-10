@@ -14,6 +14,8 @@ import { HomeModule } from './home/home.module';
 import { BrowseModule } from './browse/browse.module';
 import { SharedModule } from './shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { RouterModule } from '@angular/router';
 
 
 registerLocaleData(en);
@@ -23,6 +25,7 @@ registerLocaleData(en);
     AppComponent,
     HeaderComponent,
     SearchComponent,
+    MovieDetailsComponent,
  
   ],
   imports: [
@@ -35,6 +38,7 @@ registerLocaleData(en);
     FormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [
   ],
