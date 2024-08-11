@@ -43,9 +43,11 @@ export class MovieService {
     return this.http.get<any>(trendingUrl);  // Perform a GET request to fetch trending movies
   }
 
-  getMovieSuggestions(id: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/movies/${id}/suggestions`);
-  }
+  getMovieSuggestions(id: string): Observable<any> {
+    const suggestionsUrl = `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${id}`;
+    return this.http.get<any>(suggestionsUrl);
+}
+
 
   /**
    * Fetches 4K movies from the API.

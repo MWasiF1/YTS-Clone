@@ -34,7 +34,7 @@
       <div class="hidden md:block">
         <h1 class="title text-2xl font-bold mb-4">{{ movie.title }}</h1>
         <h4 class="year text-xl mb-0">{{ movie.year }}</h4>
-        <h4 class="genre text-lg mb-4">{{ movie.genres.join(', ') }}</h4>
+        <h4 class="genre text-lg mb-4">{{ movie.genres?.join(', ') }}</h4>
       </div>
       <div class="hidden lg:block mt-4">
         <em class="d-none lg:inline avail">Available in: </em>
@@ -83,14 +83,20 @@
         </div>
       </div>
     </div>
+
     <div class="lg:w-1/4 hidden lg:block">
-      <p class="text-lg font-semibold">Similar Movies</p>
-      <div *ngFor="let movie of suggestions" class="inline-block p-2">
-        <a [routerLink]="['/details/' + movie.id]">
-          <img class="w-full" [src]="movie.medium_cover_image" alt="">
-        </a>
+      <p class="text-lg font-semibold mb-4">Similar Movies</p>
+      <div class="grid grid-cols-2 gap-4">
+        <div *ngFor="let similarMovie of suggestions" class="p-2">
+          <a [routerLink]="['/details', similarMovie.id]" (click)="similarMovie.id(similarMovie.id)">
+            <img class="w-full h-auto object-cover rounded" [src]="similarMovie.medium_cover_image" alt="{{similarMovie.title }}">
+          </a>
+        </div>
       </div>
     </div>
+    
+    
+    
   </div>
 
   <div class="my-4">
@@ -153,7 +159,7 @@
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
             <div class="text-sm">
               <span class="text-gray-500">Country:</span>
-              <span>{{ movie.countries.join(', ') }}</span>
+              <span>{{ movie.countries?.join(', ') }}</span>
             </div>
             <div class="text-sm">
               <span class="text-gray-500">Language:</span>
