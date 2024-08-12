@@ -34,21 +34,24 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   getMovieDetails(resolution: string): void {
-    const params = {
-      with_images: true,
-      with_cast: true,
-      movie_id: this.movieId,
-      resolution: resolution // Pass the resolution parameter
-    };
-    this.movieService.getMovieDetails(params).subscribe(
-      (d: any) => {
-        this.movie = d.data.movie;
-        console.log(this.movie);
-      },
-      error => {
-        console.error('Error fetching movie details:', error);
-      }
-    );
+    if (this.movieId) {
+      const params = {
+        with_images: true,
+        with_cast: true,
+        with_director: true,
+        movie_id: this.movieId,
+        resolution: resolution // Pass the resolution parameter
+      };
+      this.movieService.getMovieDetails(params).subscribe(
+        (d: any) => {
+          this.movie = d.data.movie;
+          console.log(this.movie);
+        },
+        error => {
+          console.error('Error fetching movie details:', error);
+        }
+      );
+    }
   }
 
   fetchSuggestions(id: string): void {
