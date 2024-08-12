@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from '../movie.service'; // Ensure the import path is correct
+import { MovieService } from '../movie.service'; 
 
 @Component({
   selector: 'app-movie-details',
@@ -8,41 +8,54 @@ import { MovieService } from '../movie.service'; // Ensure the import path is co
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-  movie: any = []; // For single movie details
-  suggestions: any[] = []; // For movie suggestions
+  movie: any;
+  suggestions: any[] = [];
+  movieId: string | null = null;
+  currentResolution: string = '720p';
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService // Ensure this service is correctly imported and provided
+    private movieService: MovieService 
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const movieId = params['id'];
-      this.fetchMovieDetails(movieId);
-      this.fetchSuggestions(movieId);
+      this.movieId = params['id'];
+      if (this.movieId) {
+        this.fetchSuggestions(this.movieId);
+        this.getMovieDetails(this.currentResolution);
+      }
     });
   }
 
-  fetchMovieDetails(id: string): void {
-    this.movieService.getMovieDetails(id).subscribe(
-      response => {
-        if (response && response.data && response.data.movie) {
-          this.movie = response.data.movie; // Correctly set the movie details
-          console.log('Movie Details Response:', this.movie);
-        }
+  setResolution(resolution: string): void {
+    this.currentResolution = resolution;
+    this.getMovieDetails(resolution);
+  }
+
+  getMovieDetails(resolution: string): void {
+    const params = {
+      with_images: true,
+      with_cast: true,
+      movie_id: this.movieId,
+      resolution: resolution // Pass the resolution parameter
+    };
+    this.movieService.getMovieDetails(params).subscribe(
+      (d: any) => {
+        this.movie = d.data.movie;
+        console.log(this.movie);
       },
       error => {
         console.error('Error fetching movie details:', error);
       }
     );
   }
-  
+
   fetchSuggestions(id: string): void {
     this.movieService.getMovieSuggestions(id).subscribe(
       response => {
         if (response && response.data && response.data.movies) {
-          this.suggestions = response.data.movies; // Correctly set the movie suggestions
+          this.suggestions = response.data.movies;
           console.log('Suggestions Response:', this.suggestions);
         }
       },

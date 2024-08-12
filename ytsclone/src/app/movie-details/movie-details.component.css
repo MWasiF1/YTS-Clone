@@ -1,7 +1,7 @@
 .card {
   border: solid;
   border-width: 5px;
-  border-color: white;
+  border-color: white; /* Consider changing based on background color */
   overflow: hidden;
 }
 
@@ -133,7 +133,7 @@ a {
   width: 40px;
   height: 40px;
   overflow: hidden;
-  border-radius: 150px;
+  border-radius: 50%;
 }
 
 .tech {
@@ -211,3 +211,28 @@ td {
 .review {
   border-bottom: 1px solid #2f2f2f;
 }
+
+.screenshot-container {
+  display: flex;
+  flex-wrap: nowrap; 
+  gap: 26px; 
+}
+
+.screenshot-item {
+  flex: 1; 
+  min-width: 0; 
+}
+
+.screenshot-item img {
+  width: 100%; /* Ensures the image takes up the full width of its container */
+  height: auto; /* Maintains aspect ratio */
+}
+
+footer{
+  background: #171717;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #2f2f2f;
+  color: white;
+}
+

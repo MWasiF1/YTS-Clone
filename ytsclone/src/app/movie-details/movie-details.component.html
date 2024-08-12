@@ -1,189 +1,261 @@
-<div class="container mx-auto px-4">
-  <div class="grid grid-cols-1 gap-4">
-    <div class="flex flex-col">
-      <div class="block md:hidden">
-        <h6 class="mb-4 text-lg font-semibold">{{ movie.title }}</h6>
-        <h6 class="mb-0 text-md">{{ movie.year }}</h6>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="flex flex-col items-center">
-      <div class="card">
-        <img class="poster w-full" [src]="movie?.medium_cover_image" alt="Movie Poster">
-      </div>
-      <div class="flex flex-col mt-2">
-        <button class="btn bg-green-500 text-white border-0 py-2 rounded mt-2 hidden lg:block">
-          <i class="bi bi-download"></i>&nbsp;&nbsp;Download
-        </button>
-        <button class="btn bg-blue-500 text-white border-0 py-2 rounded mt-2">Watch Now</button>
-      </div>
-    </div>
-    <div class="flex flex-col lg:mx-5">
-      <div class="hidden md:block">
-        <h1 class="title text-2xl font-bold mb-4">{{ movie.title }}</h1>
-        <h4 class="year text-xl mb-0">{{ movie.year }}</h4>
-        <h4 class="genre text-lg mb-4">{{ movie.genres?.join(', ') }}</h4>
-      </div>
-      <div class="hidden lg:block mt-4">
-        <em class="d-none lg:inline avail">Available in: </em>
-        <button class="btn border rounded">720p.WEB</button>
-        <button class="btn border rounded mx-1">1080p.WEB</button>
-      </div>
-      <div class="flex flex-col">
-        <div class="hidden lg:block">
-          <span class="text-sm">WEB: same quality as BluRay</span>
+<div class="container mt-10 px-4">
+  <!-- Wrapper for Centering Content -->
+  <div class="flex flex-col items-center">
+    <!-- Movie Poster Section -->
+    <div class="flex flex-col md:flex-row gap-4 w-full max-w-screen-lg">
+      <!-- Center the Movie Poster and Buttons -->
+      <div class="flex-shrink-0 md:w-1/4 mx-auto">
+        <div class="card h-70 w-60 rounded border-4 border-white">
+          <img class="poster object-cover " [src]="movie?.medium_cover_image" alt="Movie Poster">
         </div>
-        <div class="my-4">
-          <button class="btn border rounded">
-            <i class="bi bi-download"></i>&nbsp;Request Subtitles
+        <div class="flex flex-col w-60 mt-2">
+          <button class="btn bg-green-500 text-white border-0 py-2 rounded mt-2 hidden lg:block">
+            <i class="bi bi-download"></i>&nbsp;&nbsp;Download
           </button>
+          <button class="btn bg-blue-500 text-white border-0 py-2 rounded mt-2">Watch Now</button>
+        </div>
+        
+      </div>
+
+      <!-- Center the Movie Details -->
+      <div class="flex-1 lg:mx-5 pl-5">
+        <div class="hidden md:block">
+          <h1 class="title text-2xl font-bold mb-4">{{ movie?.title }}</h1>
+          <h4 class="year text-xl mb-0">{{ movie?.year }}</h4>
+          <h4 class="genre text-lg mb-4">{{ movie?.genres?.join(', ') }}</h4>
+        </div>
+        <div class="hidden lg:block text-white mt-4">
+          <em class="d-none lg:inline avail">Available in: </em>
+          <button class="btn border  mr-2 text-sm rounded">720p.WEB</button>
+          <button class="btn border  rounded text-sm mx-1">1080p.WEB</button>
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center">
-            <i class="bi bi-heart-fill w-16"></i>
-            <h4 class="likes m-0 text-xl">{{ movie.like_count }}</h4>
+          <div class="hidden lg:block">
+            <span class="text-sm text-white">WEB: same quality as BluRay</span>
           </div>
-          <div class="flex items-end">
-            <span class="w-16">
-              <img class="w-full" src="https://yts.mx/assets/images/website/rt-certified-fresh.svg" alt="Certified Fresh">
-            </span>
-            <h4 class="likes m-0 text-xl">91%</h4>
-            <span class="details_1 text-sm hidden md:inline">&nbsp;TOMATOMETER · 141 reviews</span>
+          <div class="my-4">
+            <button class="btn border text-sm rounded text-white px-1 py-1">
+              <i class="bi bi-download"></i>&nbsp;Request Subtitles
+            </button>
           </div>
-          <div class="flex items-end py-2">
-            <span class="w-16">
-              <img class="w-full" src="https://yts.mx/assets/images/website/rt-upright.svg" alt="Upright">
-            </span>
-            <h4 class="likes m-0 text-xl">68%</h4>
-            <span class="details_1 text-sm hidden md:inline">&nbsp;AUDIENCE</span>
+          <div class="flex flex-col">
+            <div class="flex items-center mb-2">
+              <i class="bi bi-heart-fill w-16"></i>
+              <h4 class="likes text-xl">{{ movie?.like_count }}</h4>
+            </div>
+            <div class="flex items-center mb-2">
+              <span class="w-8 mr-4">
+                <img class="h-auto" src="https://yts.mx/assets/images/website/rt-certified-fresh.svg" alt="Certified Fresh">
+              </span>
+              <h4 class="likes m-0 text-xl">91%</h4>
+              <span class="details_1 text-sm hidden md:inline">&nbsp;TOMATOMETER · 141 reviews</span>
+            </div>
+            <div class="flex items-center mb-2">
+              <span class="w-8 mr-4">
+                <img class="h-auto" src="https://yts.mx/assets/images/website/rt-upright.svg" alt="Upright">
+              </span>
+              <h4 class="likes m-0 text-xl">68%</h4>
+              <span class="details_1 text-sm hidden md:inline">&nbsp;AUDIENCE</span>
+            </div>
+            <div class="flex items-center mb-2">
+              <span class="w-8 mr-4">
+                <img class="h-auto" src="https://yts.mx/assets/images/website/logo-imdb.svg" alt="IMDB">
+              </span>
+              <h4 class="likes m-0 text-xl">{{ movie?.rating }}</h4><span class="details_1 text-sm">/10</span>&nbsp;&nbsp;<i class="bi bi-star-fill"></i><span class="details_1 text-sm">16.1k</span>
+            </div>
+            <div class="flex flex-col gap-2 md:block lg:hidden">
+              <i class="d-none lg:inline avail">Available in: </i>
+              <button class="btn border rounded py-0">720p.WEB</button>
+              <button class="btn border rounded mx-2 py-0">1080p.WEB</button>
+            </div>
           </div>
-          <div class="flex items-end">
-            <span class="w-16">
-              <img class="w-full" src="https://yts.mx/assets/images/website/logo-imdb.svg" alt="IMDB">
-            </span>
-            <h4 class="likes m-0 text-xl">{{ movie.rating }}</h4><span class="details_1 text-sm">/10</span>&nbsp;&nbsp;<i class="bi bi-star-fill"></i><span class="details_1 text-sm">16.1k</span>
-          </div>
-          <div class="flex flex-col gap-2 md:block lg:hidden">
-            <i class="d-none lg:inline avail">Available in: </i>
-            <button class="btn border rounded py-0">720p.WEB</button>
-            <button class="btn border rounded mx-2 py-0">1080p.WEB</button>
+        </div>
+      </div>
+      
+      <!-- Center the Similar Movies Section -->
+      <div class="lg:w-1/4 text-white mt-2 mx-auto">
+        <p class="text-lg font-semibold mb-2">Similar Movies</p>
+
+        <div class="grid grid-cols-2 gap-2"> <!-- Reduced gap here -->
+          <div *ngFor="let similarMovie of suggestions" class="p-2">
+            <a [routerLink]="['/details', similarMovie.id]">
+              <img class="w-30 h-40 object-cover rounded border-4 border-white hover:border-green-500" [src]="similarMovie.medium_cover_image" alt="{{ similarMovie.title }}">
+            </a>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="lg:w-1/4 hidden lg:block">
-      <p class="text-lg font-semibold mb-4">Similar Movies</p>
-      <div class="grid grid-cols-2 gap-4">
-        <div *ngFor="let similarMovie of suggestions" class="p-2">
-          <a [routerLink]="['/details', similarMovie.id]">
-            <img class="w-full h-auto object-cover rounded" [src]="similarMovie.medium_cover_image" alt="{{similarMovie.title }}">
-          </a>
-        </div>
+    
+    <!-- Additional Sections -->
+    <div class="my-4">
+      <div class="flex flex-wrap">
+        <a class="bg-transparent text-white py-1 px-2 text-sm border rounded mr-2 mb-2" href="">Holiday</a>
+        <a class="bg-transparent text-white py-1 px-2 border text-sm rounded mr-2 mb-2" href="">Revenge</a>
+        <a class="bg-transparent text-white py-1 px-2 border text-sm rounded mr-2 mb-2" href="">Death of Son</a>
+        <a class="bg-transparent text-white py-1 px-2 border text-sm rounded mr-2 mb-2" href="">Christmas</a>
+        <a class="bg-transparent text-white py-1 px-2 border rounded text-sm mr-2 mb-2" href="">No Dialogue</a>
       </div>
     </div>
+
+    <div class="ml-12 mt-10 screenshot-container">
+      <div class="screenshot-item">
+        <img class="object-cover" [src]="movie?.large_screenshot_image1" alt="Screenshot 1">
+      </div>
+      <div class="screenshot-item">
+        <img class="object-cover" [src]="movie?.large_screenshot_image2" alt="Screenshot 2">
+      </div>
+      <div class="screenshot-item">
+        <img class="object-cover" [src]="movie?.large_screenshot_image3" alt="Screenshot 3">
+      </div>
+    </div>
+
+    
   </div>
 
-  <div class="my-4">
-    <div class="flex flex-wrap">
-      <a class="bg-gray-200 text-gray-700 py-2 px-4 rounded mr-2 mb-2" href="">Holiday</a>
-      <a class="bg-gray-200 text-gray-700 py-2 px-4 rounded mr-2 mb-2" href="">Revenge</a>
-      <a class="bg-gray-200 text-gray-700 py-2 px-4 rounded mr-2 mb-2" href="">Death of Son</a>
-      <a class="bg-gray-200 text-gray-700 py-2 px-4 rounded mr-2 mb-2" href="">Christmas</a>
-      <a class="bg-gray-200 text-gray-700 py-2 px-4 rounded mr-2 mb-2" href="">No Dialogue</a>
-    </div>
-  </div>
 
-  <div class="my-4 flex flex-wrap">
-    <div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:mr-4">
-      <img class="w-full" [src]="movie.large_screenshot_image1" alt="Screenshot 1">
-    </div>
-    <div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:mr-4">
-      <img class="w-full" [src]="movie.large_screenshot_image2" alt="Screenshot 2">
-    </div>
-    <div class="w-full lg:w-1/3">
-      <img class="w-full" [src]="movie.large_screenshot_image3" alt="Screenshot 3">
-    </div>
-  </div>
-
-  <div class="my-5 flex flex-col lg:flex-row">
-    <div class="w-full lg:w-2/3 mb-4 lg:mb-0">
-      <h3 class="text-xl font-bold">Plot Summary</h3>
-      <p class="mt-4 text-gray-600 leading-6">{{ movie.description_full }}</p>
-      <p class="mt-4 text-gray-600 leading-6">
+  <div class="mt-14 flex flex-col lg:flex-row">
+    <div class="w-full lg:w-2/3 mb-4 lg:mb-0 ml-4 lg:ml-8">
+      <h3 class="text-xl font-bold text-white">Plot Summary</h3>
+      <p class="mt-4 text-gray-400 leading-6">Rory and Cobby are unlikely partners thrown together for a heist. But when it goes awry, they <br> team up to outrun police, backward bureaucrats, and a vengeful crime boss.</p>
+      <p class="mt-4 text-gray-400 leading-6">
         <br>
-        <em class="block">Uploaded by: FREEMAN</em>
+        <em class="block">Uploaded by: <span class="font-bold">FREEMAN</span></em>
         <em>December 22, 2023 at 10:52 PM</em>
       </p>
     </div>
+    
     <div class="w-full lg:w-1/3">
-      <h3 class="text-xl font-bold mb-4">Director</h3>
+     <!--  <h3 class="text-xl text-white font-bold mb-4">Director</h3>
       <div class="flex items-center mb-5">
-        <img class="w-16 h-16 rounded-full" [src]="movie.director?.url_small_image" alt="{{ movie.director?.name }}">
-        <span class="text-gray-600 font-semibold px-3">{{ movie.director?.name }}</span>
-      </div>
-      <h3 class="text-xl font-bold mb-4">Top Cast</h3>
-      <div *ngFor="let cast of movie.cast" class="flex items-center mb-2 text-sm">
-        <img class="w-10 h-10 rounded-full" [src]="cast.url_small_image" alt="{{cast.name}}">
-        <span class="text-gray-600 font-semibold px-3">{{ cast.name }}</span> as {{ cast.character_name }}
+        <img class="w-16 h-16 rounded-full" [src]="movie?.director?.url_small_image" alt="{{ movie?.director?.name }}">
+        <span class="text-gray-600 font-semibold px-3">{{ movie?.director_name}}</span>
+      </div>-->
+      <h3 class="text-xl font-bold text-white mb-4">Top Cast</h3>
+      <div *ngFor="let cast of movie?.cast" class="flex items-center border-b border-gray-400 mb-2 text-sm">
+        <img class="w-10 h-10 rounded-full" [src]="cast?.url_small_image" alt="{{ cast?.name }}">
+        <span class="text-gray-500 font-semibold px-3">{{ cast?.name }}</span>  <span class="text-white"> as {{ cast?.character_name }}</span>
       </div>
     </div>
   </div>
 
-  <div class="my-5 flex flex-col lg:flex-row">
+  <div class=" mt-14 flex flex-col items-center lg:flex-row justify-center">
     <div class="w-full lg:w-5/6">
-      <div class="flex items-center mb-4">
-        <h3 class="text-xl font-bold">Tech Specs</h3>
-        <nav class="flex border-b border-gray-200 ml-6">
-          <button class="px-4 py-2 font-semibold text-blue-600 border-b-2 border-blue-600" data-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Technical Specs</button>
-          <button class="px-4 py-2 text-gray-600 hover:text-blue-600" data-target="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Subtitles</button>
-        </nav>
+      <div class="flex justify-center mb-4">
+        <h3 class="text-xl font-bold text-white  ">Tech Specs</h3>
       </div>
-      <div class="tab-content">
-        <div class="tab-pane hidden" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-4">
-            <div class="text-sm">
-              <span class="text-gray-500">Country:</span>
-              <span>{{ movie.countries?.join(', ') }}</span>
-            </div>
-            <div class="text-sm">
-              <span class="text-gray-500">Language:</span>
-              <span>{{ movie.language }}</span>
-            </div>
-            <div class="text-sm">
-              <span class="text-gray-500">Rating:</span>
-              <span>{{ movie.rating }}</span>
-            </div>
-            <div class="text-sm">
-              <span class="text-gray-500">Quality:</span>
-              <span>1080p</span>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane hidden" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-            <div class="text-sm">
-              <span class="text-gray-500">Languages:</span>
-              <span>English</span>
-            </div>
-            <div class="text-sm">
-              <span class="text-gray-500">Subtitles:</span>
-              <span>English</span>
-            </div>
-          </div>
-        </div>
+      
+      <div id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" class="tab-content flex justify-center">
+        <table class="table-auto border-collapse w-full">
+          <tbody>
+            <tr class="w-9/12 mx-auto h-32">
+              <!-- First Row of Four Columns -->
+              <td class="relative px-4 py-8 text-center">
+                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
+                <i class="bi bi-clock"></i> <span class="font-bold text-sm ml-2">1 hr 50 min</span>
+              </td>
+              <td class="relative px-4 py-8 text-center">
+                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
+                <i class="bi bi-file-earmark-text-fill"></i> <span class="font-bold text-sm ml-2">1.5 GB</span>
+              </td>
+              <td class="relative px-4 py-8 text-center">
+                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
+                <i class="bi bi-eye"></i> <span class="font-bold text-sm ml-2">PG-14</span>
+              </td>
+              <td class="relative px-4 py-8 text-center">
+                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
+                <i class="bi bi-badge-cc"></i><span class="font-bold text-sm text-green-500 ml-2">Subtitles</span>
+                <i class="bi bi-flag"></i>
+              </td>
+            </tr>
+            
+            <tr class="w-9/12 mx-auto h-32">
+              <!-- Second Row of Four Columns -->
+              <td class=" px-4 py-8 text-center">
+                <i class="bi bi-chevron-bar-expand"></i> <span class="font-bold text-sm ml-2">1920*800</span>
+              </td>
+              <td class=" px-4 py-8 text-center">
+                <i class="bi bi-megaphone"></i> <span class="font-bold ml-2 text-sm">English</span>
+              </td>
+              <td class=" px-4 py-8 text-center">
+                <i class="bi bi-collection-play-fill"></i><span class="font-bold ml-2 text-sm">23.976 fps</span>
+              </td>
+              <td class=" px-4 py-8 text-center">
+                <span class="font-bold text-sm">Seeds</span> <span class="text-green-500 ml-2 font-bold text-sm">100+</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <div class="w-full lg:w-1/6 hidden lg:block">
-      <h4 class="text-lg font-semibold mb-4">More Info</h4>
-      <ul class="list-disc text-gray-600 text-sm">
-        <li class="my-2">Audio</li>
-        <li class="my-2">Artistic Language</li>
-        <li class="my-2">Costumes</li>
-        <li class="my-2">History</li>
-      </ul>
     </div>
   </div>
+  
+
+  <div class=" mt-20 flex flex-col items-center lg:flex-row justify-center space-x-4">
+    <!-- Comments Section -->
+    <div class="w-full lg:w-1/2 px-4 mb-14">
+      <h3 class="text-xl font-bold text-white mb-4"><span class="px-4 "><i class="bi bi-chat-left-fill"></i></span>Comments</h3>
+      <div class="space-y-4">
+        <!-- Comment 1 -->
+        <div class="flex items-start space-x-4 border-b border-gray-200 pb-4">
+          <img src="https://via.placeholder.com/40" alt="Profile Pic" class="w-10 h-10 rounded-full">
+          <div>
+            <p class="font-bold text-white">John99 <span class="text-gray-400 text-sm">Aug 12, 2024 at 2:30 PM</span></p>
+            <p class="text-gray-300">English Subtitles are missing here.</p>
+            <div class="flex items-center space-x-2 mt-2">
+              <i class="bi bi-heart-fill"></i>
+              <span class="text-gray-400">10</span>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat Comment Block for More Comments -->
+        <!-- Comment 2 -->
+        <div class="flex items-start space-x-4 border-b border-gray-200 pb-4">
+          <img src="https://via.placeholder.com/40" alt="Profile Pic" class="w-10 h-10 rounded-full">
+          <div>
+            <p class="font-bold text-white">Emma543 <span class="text-gray-400 text-sm">Aug 5, 2024 at 3:00 AM</span></p>
+            <p class="text-gray-300">Another dummy comment. Very interesting!</p>
+            <div class="flex items-center space-x-2 mt-2">
+              <i class="bi bi-heart-fill"></i>
+              <span class="text-gray-400">8</span>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  
+    <!-- Reviews Section -->
+    <div class="w-full lg:w-1/2 px-4 mb-14">
+      <h3 class="text-xl font-bold text-white mb-4"> <span class="px-4"><i class="bi bi-star-fill"></i></span>Reviews</h3>
+      <div class="space-y-4">
+        <!-- Review 1 -->
+        <div class="border-b border-gray-200 pb-4">
+          <p class="font-bold text-white">Walton   <span class="px-4 py-2"><i class="bi bi-star-fill"></i></span></p>
+          <p class="text-[#bababa] text-sm"> A visually stunning film with a gripping storyline that keeps you hooked from start to finish. The lead performance is outstanding, and the cinematography is nothing short of breathtaking. However, some plot twists felt a bit predictable.  </p>
+            
+           
+        </div>
+        <!-- Review 2 -->
+        <div class="border-b border-gray-200 pb-4">
+          <p class="font-bold text-white">Jack Reacher   <span class="px-4 py-2" ><i class="bi bi-star-fill"></i></span></p>
+          <p class="text-[#bababa] text-sm">An engaging movie with a strong narrative and well-developed characters. The pacing was a bit uneven, but the emotional depth and character arcs make it a worthwhile watch. The soundtrack complements the scenes beautifully.</p>
+
+      </div>
+    </div>
+  </div>
+  
+      
+     
+  
+  
 </div>
+
+<footer>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-center">
+      <span class="text-center">YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies - Requests - Login - Language</span>
+      <span class="py-2 text-center">By using this site you agree to and accept our User Agreement, which can be read here.</span>
+    </div>
+  </div>
+</footer>
