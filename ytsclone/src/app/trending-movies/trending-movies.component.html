@@ -3,7 +3,7 @@
   <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 ml-10 gap-2">
     <div *ngFor="let movie of trendingMovies" class="flex flex-col items-start">
       <!-- Movie card container -->
-      <div class="relative bg-black text-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105 border-4 border-white hover:border-green-500 w-48 h-64">
+      <div class="relative bg-black text-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105 border-4 border-white hover:border-green-500 w-48 h-90">
         <!-- Image section with hover overlay -->
         <div class="relative w-full h-full">
           <img [src]="movie.medium_cover_image" alt="{{ movie.title }}" class="w-full h-full object-cover transition-opacity duration-300 hover:opacity-30">

@@ -16,6 +16,8 @@ import { SharedModule } from './shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { RouterModule } from '@angular/router';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 registerLocaleData(en);
@@ -26,6 +28,8 @@ registerLocaleData(en);
     HeaderComponent,
     SearchComponent,
     MovieDetailsComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
  
   ],
   imports: [

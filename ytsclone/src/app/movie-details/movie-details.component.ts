@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from '../movie.service'; // Make sure the import path is correct
+import { MovieService } from '../movie.service'; // Ensure the import path is correct
 
 @Component({
   selector: 'app-movie-details',
@@ -8,9 +8,8 @@ import { MovieService } from '../movie.service'; // Make sure the import path is
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-  genres: string[] = [];
-  movie: any = {};
-  suggestions: any[] = [];
+  movie: any = []; // For single movie details
+  suggestions: any[] = []; // For movie suggestions
 
   constructor(
     private route: ActivatedRoute,
@@ -28,8 +27,10 @@ export class MovieDetailsComponent implements OnInit {
   fetchMovieDetails(id: string): void {
     this.movieService.getMovieDetails(id).subscribe(
       response => {
-        console.log('Movie Details Response:', response);
-        this.movie = response.data.movie || {};
+        if (response && response.data && response.data.movie) {
+          this.movie = response.data.movie; // Correctly set the movie details
+          console.log('Movie Details Response:', this.movie);
+        }
       },
       error => {
         console.error('Error fetching movie details:', error);
@@ -40,14 +41,14 @@ export class MovieDetailsComponent implements OnInit {
   fetchSuggestions(id: string): void {
     this.movieService.getMovieSuggestions(id).subscribe(
       response => {
-        console.log('Suggestions Response:', response);
-        this.suggestions = response.data.movies || [];
+        if (response && response.data && response.data.movies) {
+          this.suggestions = response.data.movies; // Correctly set the movie suggestions
+          console.log('Suggestions Response:', this.suggestions);
+        }
       },
       error => {
         console.error('Error fetching suggestions:', error);
       }
     );
   }
-  
-  
 }

@@ -2,12 +2,12 @@
   <!-- Movie card container with hover effects -->
   <div class="relative movie-card brd rounded-lg border-white hover:border-green-500 transition-all duration-300 w-52">
 
-    <img [src]="movie.medium_cover_image" alt="{{ movie.title }}" class="w-full h-64 object-cover">
+    <img [src]="movie.medium_cover_image" alt="{{ movie.title }}" class="w-full h-90 object-cover">
 
     <!-- Details overlay that appears on hover -->
     <div class="movie-details absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-center opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg p-4">
 
-      <svg class="absolute top-4 right-4 h-8 w-8 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg class="absolute top-4 right-34 h-8 w-8 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27l4.15 2.18-1.06-4.61L20 10.1l-4.71-.39L12 5.5 8.71 9.71 4 10.1l3.91 4.74-1.06 4.61L12 17.27z" />
       </svg>
       

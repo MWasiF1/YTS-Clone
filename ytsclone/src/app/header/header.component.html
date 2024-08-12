@@ -46,7 +46,9 @@
       <a href="/browse" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Browse Movies</a>
       <a href="/trending" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Trending</a>
       <a href="/four-k-movies" class="text-green-500 px-2 py-2 rounded-md text-base font-medium">4K</a>
-      <a href="/login" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Login | Register</a>
+      <a href="#" (click)="loginForm.openLoginForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Login </a>
+      <a href="#" (click)="registerForm.openRegisterForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Register</a>
+
     </div>
 
     <!-- Mobile menu button, visible only on small screens -->
@@ -92,3 +94,5 @@
     </div>
   </div>
 </nav>
+<app-login-form #loginForm></app-login-form>
+<app-register-form #registerForm></app-register-form>
