@@ -10,8 +10,8 @@ import { MovieService } from '../movie.service';
 export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
-  showDropdown: boolean = false;
-
+  showDropdown = false;
+  openMenu = false;
   constructor(private router: Router, private movieService: MovieService) { }
 
   ngOnInit(): void {
@@ -54,6 +54,16 @@ export class HeaderComponent implements OnInit {
     this.searchQuery = movie.title;
     this.showDropdown = false;
     this.router.navigate(['/movie', movie.id]);  // Navigate to the movie detail page
+  }
+
+  toggleMenu() {
+    this.openMenu = !this.openMenu;
+  }
+
+  hideDropdown() {
+    setTimeout(() => {
+      this.showDropdown = false;
+    }, 100); // Delay to allow click events inside dropdown
   }
 
   @HostListener('document:click', ['$event'])

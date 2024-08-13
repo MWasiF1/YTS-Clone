@@ -5,3 +5,7 @@ footer{
     border-top: 1px solid #2f2f2f;
     color: white;
 }
+.movie-card {
+    border-radius: 6px; /* Rounds the corners of the movie card */
+    transition: border-color 0.3s ease-in-out; /* Smooth transition for border color changes */
+  }

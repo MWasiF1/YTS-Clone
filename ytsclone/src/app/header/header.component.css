@@ -89,6 +89,33 @@ input[type="text"] {
     position: fixed !important; 
 }
 
+/* Custom styles for the navbar */
+nav {
+  height: 60px;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+/* Hide menu on larger screens */
+.md\:hidden {
+  display: none;
+}
+
+/* Show menu on medium and smaller screens */
+.md\:flex {
+  display: flex;
+}
+
+/* Ensure mobile menu content is hidden by default */
+.md\:hidden {
+  display: none;
+}
+
+/* Mobile menu visibility */
+.open-menu {
+  display: block;
+}
+
+
 /* Media query for responsive design */
 @media (min-width: 768px) {
   .md\:hidden {

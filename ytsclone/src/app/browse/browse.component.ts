@@ -1,4 +1,3 @@
-// browse.component.ts
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Router } from '@angular/router';
@@ -23,6 +22,7 @@ export class BrowseComponent implements OnInit {
   years: number[] = [];
   languages: string[] = [];
   isLoading: boolean = true;
+  searchResults: any[] = [];
 
   constructor(private movieService: MovieService, private router: Router) { }
 
@@ -50,11 +50,11 @@ export class BrowseComponent implements OnInit {
     });
 
     this.movieService.getYears().subscribe(years => {
-      this.years = years;
+      this.years = Array.isArray(years) ? years : []; // Ensure years is an array
     });
 
     this.movieService.getLanguages().subscribe(languages => {
-      this.languages = languages;
+      this.languages = Array.isArray(languages) ? languages : []; // Ensure languages is an array
     });
   }
 
@@ -94,14 +94,47 @@ export class BrowseComponent implements OnInit {
           return b.year - a.year;
         } else if (this.selectedOrderBy === 'rating') {
           return b.rating - a.rating;
+        } else if (this.selectedOrderBy === 'oldest') {
+          return a.year - b.year; // Corrected oldest sort
         }
         return 0;
       });
     }
   }
 
-  onFilterChange(): void {
-    this.applyFilters();
+  searchMovies(event: Event): void {
+    event.preventDefault(); // Prevent the default form submission
+    if (this.searchQuery.trim()) {
+      this.movieService.searchMovies(this.searchQuery).subscribe(data => {
+        if (data && data.data && data.data.movies) {
+          this.filteredMovies = data.data.movies;
+        } else {
+          console.error('Unexpected API response format:', data);
+          this.filteredMovies = [];
+        }
+      }, error => {
+        console.error('Error fetching movies:', error);
+        this.filteredMovies = [];
+      });
+    }
+  }
+
+  setupSearch(): void {
+    if (this.searchQuery.trim()) {
+      this.movieService.searchMovies(this.searchQuery).subscribe(data => {
+        if (data && data.data && data.data.movies) {
+          this.searchResults = data.data.movies;
+        } else {
+          console.error('Unexpected API response format:', data);
+          this.searchResults = [];
+        }
+      }, error => {
+        console.error('Error fetching movies:', error);
+        this.searchResults = [];
+      });
+    } else {
+      this.searchResults = [];
+    }
   }
 
   viewMovieDetails(movieId: number): void {
