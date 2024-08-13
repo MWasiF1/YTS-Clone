@@ -18,11 +18,11 @@ export class LoginFormComponent {
   }
 
   login() {
-    // Add your login logic here
+    
     console.log('Username:', this.username);
     console.log('Password:', this.password);
     
-    // After login logic, close the form
+    
     this.closeLoginForm();
   }
 }

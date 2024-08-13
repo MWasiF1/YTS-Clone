@@ -1,7 +1,6 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,7 +18,6 @@ import { RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
-
 registerLocaleData(en);
 
 @NgModule({
@@ -30,22 +28,20 @@ registerLocaleData(en);
     MovieDetailsComponent,
     LoginFormComponent,
     RegisterFormComponent,
- 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,  
+    HttpClientModule,
     HomeModule,
     BrowseModule,
     SharedModule,
     FormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

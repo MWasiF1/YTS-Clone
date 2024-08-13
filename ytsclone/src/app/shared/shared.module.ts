@@ -15,4 +15,4 @@ import { RouterModule } from '@angular/router';
     MovieCardComponent  
   ]
 })
-export class SharedModule { } // Define and export the SharedModule class
+export class SharedModule { } 

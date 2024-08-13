@@ -5,22 +5,32 @@
       <!-- Center the Movie Poster and Buttons -->
       <div class="flex-shrink-0 md:w-1/4 mx-auto">
         <div class="card h-70 w-60 rounded border-4 border-white">
-          <img class="poster object-cover" [src]="movie?.medium_cover_image" alt="Movie Poster">
+          <img
+            class="poster object-cover"
+            [src]="movie?.medium_cover_image"
+            alt="Movie Poster"
+          />
         </div>
         <div class="flex flex-col w-60 mt-2">
-          <button class="btn bg-green-500 text-white pr-4 font-bold border-0 py-2 rounded mt-2 hidden lg:block">
+          <button
+            class="btn bg-green-500 text-white pr-4 font-bold border-0 py-2 rounded mt-2 hidden lg:block"
+          >
             <i class="bi bi-download"></i>&nbsp;&nbsp;Download
           </button>
-          <button class="btn bg-blue-500 text-white border-0 py-2 rounded font-bold mt-2">Watch Now</button>
+          <button
+            class="btn bg-blue-500 text-white border-0 py-2 rounded font-bold mt-2"
+          >
+            Watch Now
+          </button>
         </div>
       </div>
-  
+
       <!-- Center the Movie Details -->
       <div class="flex-1 lg:mx-5 pl-5">
         <div class="hidden md:block">
           <h1 class="title text-2xl font-bold mb-4">{{ movie?.title }}</h1>
           <h4 class="year text-xl mb-0">{{ movie?.year }}</h4>
-          <h4 class="genre text-lg mb-4">{{ movie?.genres?.join(', ') }}</h4>
+          <h4 class="genre text-lg mb-4">{{ movie?.genres?.join(", ") }}</h4>
         </div>
         <div class="hidden lg:block text-white mt-4">
           <em class="d-none lg:inline avail">Available in: </em>
@@ -38,28 +48,49 @@
           </div>
           <div class="flex flex-col">
             <div class="flex items-center mb-2">
-              <i class="bi bi-heart-fill w-6 mr-2"></i> <!-- Reduced width and margin -->
+              <i class="bi bi-heart-fill w-6 mr-2"></i>
+              <!-- Reduced width and margin -->
               <h4 class="likes text-xl">{{ movie?.like_count }}</h4>
             </div>
             <div class="flex items-center mb-2">
               <span class="w-8 mr-4">
-                <img class="h-auto" src="https://yts.mx/assets/images/website/rt-certified-fresh.svg" alt="Certified Fresh">
+                <img
+                  class="h-auto"
+                  src="https://yts.mx/assets/images/website/rt-certified-fresh.svg"
+                  alt="Certified Fresh"
+                />
               </span>
               <h4 class="likes m-0 text-xl">91%</h4>
-              <span class="details_1 text-sm hidden md:inline">&nbsp;TOMATOMETER · 141 reviews</span>
+              <span class="details_1 text-sm hidden md:inline"
+                >&nbsp;TOMATOMETER · 141 reviews</span
+              >
             </div>
             <div class="flex items-center mb-2">
               <span class="w-8 mr-4">
-                <img class="h-auto" src="https://yts.mx/assets/images/website/rt-upright.svg" alt="Upright">
+                <img
+                  class="h-auto"
+                  src="https://yts.mx/assets/images/website/rt-upright.svg"
+                  alt="Upright"
+                />
               </span>
               <h4 class="likes m-0 text-xl">68%</h4>
-              <span class="details_1 text-sm hidden md:inline">&nbsp;AUDIENCE</span>
+              <span class="details_1 text-sm hidden md:inline"
+                >&nbsp;AUDIENCE</span
+              >
             </div>
             <div class="flex items-center mb-2">
               <span class="w-8 mr-4">
-                <img class="h-auto" src="https://yts.mx/assets/images/website/logo-imdb.svg" alt="IMDB">
+                <img
+                  class="h-auto"
+                  src="https://yts.mx/assets/images/website/logo-imdb.svg"
+                  alt="IMDB"
+                />
               </span>
-              <h4 class="likes m-0 text-xl">{{ movie?.rating }}</h4><span class="details_1 text-sm">/10</span>&nbsp;&nbsp;<i class="bi bi-star-fill"></i><span class="details_1 text-sm">16.1k</span>
+              <h4 class="likes m-0 text-xl">{{ movie?.rating }}</h4>
+              <span class="details_1 text-sm">/10</span>&nbsp;&nbsp;<i
+                class="bi bi-star-fill"
+              ></i
+              ><span class="details_1 text-sm">16.1k</span>
             </div>
             <div class="flex flex-col gap-2 md:block lg:hidden">
               <i class="d-none lg:inline avail">Available in: </i>
@@ -69,61 +100,102 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Center the Similar Movies Section -->
       <div class="lg:w-1/4 text-white mt-2 mx-auto">
         <p class="text-lg font-semibold mb-2">Similar Movies</p>
-      
+
         <div class="grid grid-cols-2 gap-2">
           <div *ngFor="let similarMovie of suggestions" class="p-2">
             <a [routerLink]="['/movie-details', similarMovie.id]">
-              <img 
-                class="w-30 h-40 object-cover rounded border-4 border-white hover:border-green-500" 
-                [src]="similarMovie.medium_cover_image" 
-                alt="{{ similarMovie.title }}">
+              <img
+                class="w-30 h-40 object-cover rounded border-4 border-white hover:border-green-500"
+                [src]="similarMovie.medium_cover_image"
+                alt="{{ similarMovie.title }}"
+              />
             </a>
           </div>
         </div>
       </div>
-      
     </div>
-    
+
     <!-- Additional Sections -->
     <div class="mt-8 w-full max-w-screen-lg">
       <div class="flex flex-wrap">
-        <a class="bg-transparent font-bold text-white py-1 px-2 text-sm border border-gray-400 rounded mr-2 mb-2" href="">Holiday</a>
-        <a class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2" href="">Revenge</a>
-        <a class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2" href="">Death of Son</a>
-        <a class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2" href="">Christmas</a>
-        <a class="bg-transparent font-bold text-white py-1 px-2 border rounded border-gray-400 text-sm mr-2 mb-2" href="">No Dialogue</a>
+        <a
+          class="bg-transparent font-bold text-white py-1 px-2 text-sm border border-gray-400 rounded mr-2 mb-2"
+          href=""
+          >Holiday</a
+        >
+        <a
+          class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2"
+          href=""
+          >Revenge</a
+        >
+        <a
+          class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2"
+          href=""
+          >Death of Son</a
+        >
+        <a
+          class="bg-transparent font-bold text-white py-1 px-2 border text-sm border-gray-400 rounded mr-2 mb-2"
+          href=""
+          >Christmas</a
+        >
+        <a
+          class="bg-transparent font-bold text-white py-1 px-2 border rounded border-gray-400 text-sm mr-2 mb-2"
+          href=""
+          >No Dialogue</a
+        >
       </div>
     </div>
-  
+
     <div class="ml-12 mt-8 screenshot-container">
       <div class="screenshot-item">
-        <img class="object-cover" [src]="movie?.large_screenshot_image1" alt="Screenshot 1">
+        <img
+          class="object-cover"
+          [src]="movie?.large_screenshot_image1"
+          alt="Screenshot 1"
+        />
       </div>
       <div class="screenshot-item">
-        <img class="object-cover" [src]="movie?.large_screenshot_image2" alt="Screenshot 2">
+        <img
+          class="object-cover"
+          [src]="movie?.large_screenshot_image2"
+          alt="Screenshot 2"
+        />
       </div>
       <div class="screenshot-item">
-        <img class="object-cover" [src]="movie?.large_screenshot_image3" alt="Screenshot 3">
+        <img
+          class="object-cover"
+          [src]="movie?.large_screenshot_image3"
+          alt="Screenshot 3"
+        />
       </div>
     </div>
-    
   </div>
-  
+
   <div class="mt-14 flex flex-col lg:flex-row">
     <div class="w-full lg:w-2/3 mb-4 lg:mb-0 ml-4 lg:ml-8">
       <h3 class="text-xl font-bold text-white">Plot Summary</h3>
-      <p class="mt-4 text-gray-400 text-sm leading-6">Hapless family man Paul Matthews finds his life turned upside down when millions <br> of strangers suddenly start seeing him in their dreams. But when his night time <br> appearances take a nightmarish turn, Paul is forced to navigate his newfound <br> stardom.</p>
+      <p class="mt-4 text-gray-400 text-sm leading-6">
+        Hapless family man Paul Matthews finds his life turned upside down when
+        millions <br />
+        of strangers suddenly start seeing him in their dreams. But when his
+        night time <br />
+        appearances take a nightmarish turn, Paul is forced to navigate his
+        newfound <br />
+        stardom.
+      </p>
       <p class="mt-4 text-gray-400 leading-6">
-        <br>
-        <em class="block">Uploaded by: <span class="font-bold">FREEMAN</span></em>
+        <br />
+        <em class="block"
+          >Uploaded by: <span class="font-bold">FREEMAN</span></em
+        >
         <em>December 22, 2023 at 10:52 PM</em>
       </p>
     </div>
-    
+
     <div class="w-full lg:w-1/3">
       <!-- Director Section (Uncomment if needed) -->
       <!-- 
@@ -133,11 +205,19 @@
         <span class="text-gray-600 font-semibold px-3">{{ movie?.director?.name }}</span>
       </div>
       -->
-      
+
       <h3 class="text-xl font-bold text-white mb-4">Top Cast</h3>
-      <div *ngFor="let cast of movie?.cast" class="flex items-center border-b border-gray-400 mb-2 text-sm">
-        <img class="w-10 h-10 rounded-full" [src]="cast?.url_small_image" alt="{{ cast?.name }}">
-        <span class="text-gray-500 font-semibold px-3">{{ cast?.name }}</span>  <span class="text-white"> as {{ cast?.character_name }}</span>
+      <div
+        *ngFor="let cast of movie?.cast"
+        class="flex items-center border-b border-gray-400 mb-2 text-sm"
+      >
+        <img
+          class="w-10 h-10 rounded-full"
+          [src]="cast?.url_small_image"
+          alt="{{ cast?.name }}"
+        />
+        <span class="text-gray-500 font-semibold px-3">{{ cast?.name }}</span>
+        <span class="text-white"> as {{ cast?.character_name }}</span>
       </div>
     </div>
   </div>
@@ -149,113 +229,190 @@
         <div class="flex items-center">
           <h3 class="text-xl font-bold text-white mr-10">Tech Specs</h3>
           <div class="flex ml-4">
-            <button (click)="setResolution('720p')" class="px-4 py-1 text-white rounded text-sm hover:bg-[#171717] hover:font-bold">720p.web</button>
-            <button (click)="setResolution('1080p')" class="px-4 py-1 text-white rounded text-sm hover:bg-[#171717] hover:font-bold ml-2">1080p.web</button>
+            <button
+              (click)="setResolution('720p')"
+              class="px-4 py-1 text-white rounded text-sm hover:bg-[#171717] hover:font-bold"
+            >
+              720p.web
+            </button>
+            <button
+              (click)="setResolution('1080p')"
+              class="px-4 py-1 text-white rounded text-sm hover:bg-[#171717] hover:font-bold ml-2"
+            >
+              1080p.web
+            </button>
           </div>
         </div>
       </div>
-  
+
       <!-- Tab content based on selected resolution -->
-      <div id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" class="tab-content flex justify-center">
+      <div
+        id="nav-home"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+        class="tab-content flex justify-center"
+      >
         <table class="table-auto border-collapse w-full">
           <tbody>
             <!-- 720p Row -->
-            <tr *ngIf="currentResolution === '720p'" class="w-9/12 mx-auto h-32">
+            <tr
+              *ngIf="currentResolution === '720p'"
+              class="w-9/12 mx-auto h-32"
+            >
               <!-- First Row of Four Columns -->
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-clock"></i> <span class="font-bold text-sm ml-2">1 hr 50 min</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-clock"></i>
+                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-file-earmark-text-fill"></i> <span class="font-bold text-sm ml-2">1.5 GB</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-file-earmark-text-fill"></i>
+                <span class="font-bold text-sm ml-2">1.5 GB</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-eye"></i> <span class="font-bold text-sm ml-2">PG-14</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-eye"></i>
+                <span class="font-bold text-sm ml-2">PG-14</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-badge-cc"></i><span class="font-bold text-sm text-green-500 ml-2">Subtitles</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-badge-cc"></i
+                ><span class="font-bold text-sm text-green-500 ml-2"
+                  >Subtitles</span
+                >
                 <i class="bi bi-flag"></i>
               </td>
             </tr>
-            
-            <tr *ngIf="currentResolution === '720p'" class="w-9/12 mx-auto h-32">
+
+            <tr
+              *ngIf="currentResolution === '720p'"
+              class="w-9/12 mx-auto h-32"
+            >
               <!-- Second Row of Four Columns -->
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-chevron-bar-expand"></i> <span class="font-bold text-sm ml-2">1280*536</span>
+                <i class="bi bi-chevron-bar-expand"></i>
+                <span class="font-bold text-sm ml-2">1280*536</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-megaphone"></i> <span class="font-bold ml-2 text-sm">English</span>
+                <i class="bi bi-megaphone"></i>
+                <span class="font-bold ml-2 text-sm">English</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-collection-play-fill"></i><span class="font-bold ml-2 text-sm">23.976 fps</span>
+                <i class="bi bi-collection-play-fill"></i
+                ><span class="font-bold ml-2 text-sm">23.976 fps</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <span class="font-bold text-sm">Seeds</span> <span class="text-green-500 ml-2 font-bold text-sm">100+</span>
+                <span class="font-bold text-sm">Seeds</span>
+                <span class="text-green-500 ml-2 font-bold text-sm">100+</span>
               </td>
             </tr>
-  
+
             <!-- 1080p Row -->
-            <tr *ngIf="currentResolution === '1080p'" class="w-9/12 mx-auto h-32">
+            <tr
+              *ngIf="currentResolution === '1080p'"
+              class="w-9/12 mx-auto h-32"
+            >
               <!-- First Row of Four Columns -->
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-clock"></i> <span class="font-bold text-sm ml-2">1 hr 50 min</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-clock"></i>
+                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-file-earmark-text-fill"></i> <span class="font-bold text-sm ml-2">2.5 GB</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-file-earmark-text-fill"></i>
+                <span class="font-bold text-sm ml-2">2.5 GB</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-eye"></i> <span class="font-bold text-sm ml-2">PG-14</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-eye"></i>
+                <span class="font-bold text-sm ml-2">PG-14</span>
               </td>
               <td class="relative px-4 py-8 text-center">
-                <div class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500" style="margin-left: 0.5rem; margin-right: 0.5rem;"></div>
-                <i class="bi bi-badge-cc"></i><span class="font-bold text-sm text-green-500 ml-2">Subtitles</span>
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-badge-cc"></i
+                ><span class="font-bold text-sm text-green-500 ml-2"
+                  >Subtitles</span
+                >
                 <i class="bi bi-flag"></i>
               </td>
             </tr>
-            
-            <tr *ngIf="currentResolution === '1080p'" class="w-9/12 mx-auto h-32">
+
+            <tr
+              *ngIf="currentResolution === '1080p'"
+              class="w-9/12 mx-auto h-32"
+            >
               <!-- Second Row of Four Columns -->
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-chevron-bar-expand"></i> <span class="font-bold text-sm ml-2">1920*804</span>
+                <i class="bi bi-chevron-bar-expand"></i>
+                <span class="font-bold text-sm ml-2">1920*804</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-megaphone"></i> <span class="font-bold ml-2 text-sm">English</span>
+                <i class="bi bi-megaphone"></i>
+                <span class="font-bold ml-2 text-sm">English</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <i class="bi bi-collection-play-fill"></i><span class="font-bold ml-2 text-sm">23.976 fps</span>
+                <i class="bi bi-collection-play-fill"></i
+                ><span class="font-bold ml-2 text-sm">23.976 fps</span>
               </td>
               <td class="px-4 py-8 text-center">
-                <span class="font-bold text-sm">Seeds</span> 
+                <span class="font-bold text-sm">Seeds</span>
               </td>
             </tr>
-  
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  
-  
 
-  
-  <div class=" mt-20 flex flex-col items-center lg:flex-row justify-center space-x-4">
+  <div
+    class="mt-20 flex flex-col items-center lg:flex-row justify-center space-x-4"
+  >
     <!-- Comments Section -->
     <div class="w-full lg:w-1/2 px-4 mb-14">
       <h3 class="text-xl font-bold text-white mb-4">
         <span class="px-4"><i class="bi bi-chat-left-fill"></i></span>Comments
       </h3>
       <div class="space-y-4">
-        <!-- Comment 1 -->
-        <div class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Pic" class="w-10 h-10 rounded-full">
+        
+        <div
+          class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/men/1.jpg"
+            alt="Profile Pic"
+            class="w-10 h-10 rounded-full"
+          />
           <div>
-            <p class=" text-white"><span class="font-bold mr-10">John99</span> <span class="text-gray-400 text-sm">Aug 12, 2024 at 2:30 PM</span></p>
+            <p class="text-white">
+              <span class="font-bold mr-10">John99</span>
+              <span class="text-gray-400 text-sm">Aug 12, 2024 at 2:30 PM</span>
+            </p>
             <p class="text-gray-300">English Subtitles are missing here.</p>
             <div class="flex items-center space-x-2 mt-2">
               <i class="bi bi-heart-fill"></i>
@@ -263,12 +420,23 @@
             </div>
           </div>
         </div>
-        <!-- Comment 2 -->
-        <div class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg">
-          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Profile Pic" class="w-10 h-10 rounded-full">
+        
+        <div
+          class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg"
+        >
+          <img
+            src="https://randomuser.me/api/portraits/women/2.jpg"
+            alt="Profile Pic"
+            class="w-10 h-10 rounded-full"
+          />
           <div>
-            <p class=" text-white"><span class="font-bold mr-10">Emma Alan </span><span class="text-gray-400 text-sm">Aug 5, 2024 at 3:00 AM</span></p>
-            <p class="text-gray-300">Another dummy comment. Very interesting!</p>
+            <p class="text-white">
+              <span class="font-bold mr-10">Emma Alan </span
+              ><span class="text-gray-400 text-sm">Aug 5, 2024 at 3:00 AM</span>
+            </p>
+            <p class="text-gray-300">
+              Another dummy comment. Very interesting!
+            </p>
             <div class="flex items-center space-x-2 mt-2">
               <i class="bi bi-heart-fill"></i>
               <span class="text-gray-400">8</span>
@@ -278,41 +446,58 @@
       </div>
     </div>
 
-
- <!-- Reviews Section -->
- <div class="w-full lg:w-1/2 px-4 mb-14">
-  <h3 class="text-xl font-bold text-white mb-4">
-    <span class="px-4"><i class="bi bi-star-fill"></i></span>Reviews
-  </h3>
-  <div class="space-y-4">
-    <!-- Review 1 -->
-    <div class="border-b border-gray-400 pb-4">
-      <p class="font-bold text-gray-400">
-        Walton <span class="px-4 py-4 mb-4 text-white"><i class="bi bi-star-fill"></i> 7/10</span>
-      </p>
-      <p class="text-gray-400 text-sm mt-4">
-        A visually stunning film with a gripping storyline that keeps you hooked from start to finish. The lead performance is outstanding, and the cinematography is nothing short of breathtaking. However, some plot twists felt a bit predictable.
-      </p>
-    </div>
-    <!-- Review 2 -->
-    <div class="pb-4 ">
-      <p class="font-bold text-gray-400">
-        Jack Reacher <span class="px-4 py-2 text-white"><i class="bi bi-star-fill"></i> 8/10</span>
-      </p>
-      <p class="text-gray-400 text-sm my-2">
-        An engaging movie with a strong narrative and well-developed characters. The pacing was a bit uneven, but the emotional depth and character arcs make it a worthwhile watch. The soundtrack complements the scenes beautifully.
-      </p>
+    <!-- Reviews Section -->
+    <div class="w-full lg:w-1/2 px-4 mb-14">
+      <h3 class="text-xl font-bold text-white mb-4">
+        <span class="px-4"><i class="bi bi-star-fill"></i></span>Reviews
+      </h3>
+      <div class="space-y-4">
+        
+        <div class="border-b border-gray-400 pb-4">
+          <p class="font-bold text-gray-400">
+            Walton
+            <span class="px-4 py-4 mb-4 text-white"
+              ><i class="bi bi-star-fill"></i> 7/10</span
+            >
+          </p>
+          <p class="text-gray-400 text-sm mt-4">
+            A visually stunning film with a gripping storyline that keeps you
+            hooked from start to finish. The lead performance is outstanding,
+            and the cinematography is nothing short of breathtaking. However,
+            some plot twists felt a bit predictable.
+          </p>
+        </div>
+        
+        <div class="pb-4">
+          <p class="font-bold text-gray-400">
+            Jack Reacher
+            <span class="px-4 py-2 text-white"
+              ><i class="bi bi-star-fill"></i> 8/10</span
+            >
+          </p>
+          <p class="text-gray-400 text-sm my-2">
+            An engaging movie with a strong narrative and well-developed
+            characters. The pacing was a bit uneven, but the emotional depth and
+            character arcs make it a worthwhile watch. The soundtrack
+            complements the scenes beautifully.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
-
-<footer>
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col items-center">
-      <span class="text-center">YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies - Requests - Login - Language</span>
-      <span class="py-2 text-center">By using this site you agree to and accept our User Agreement, which can be read here.</span>
+  <footer>
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col items-center">
+        <span class="text-center"
+          >YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies
+          - Requests - Login - Language</span
+        >
+        <span class="py-2 text-center"
+          >By using this site you agree to and accept our User Agreement, which
+          can be read here.</span
+        >
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TrendingMoviesComponent } from './trending-movies.component'; // Ensure this path is correct
+import { TrendingMoviesComponent } from './trending-movies.component'; 
 
 const routes: Routes = [
   { path: '', component: TrendingMoviesComponent }

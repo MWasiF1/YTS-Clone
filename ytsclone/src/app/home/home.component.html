@@ -1,7 +1,5 @@
 <div class="pl-10 py-6 bg-[#171717]">
   <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-    <!-- Loop through the 'movies' array and create a movie card for each item -->
-    <!-- Pass the movie object to the 'app-movie-card' component -->
     <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
   </div>
 </div>

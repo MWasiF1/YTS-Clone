@@ -20,7 +20,7 @@ export class RegisterFormComponent {
   }
 
   register() {
-    // Add register logic here
+    
     console.log('Username:', this.username);
     console.log('Email:', this.email);
     console.log('Password:', this.password);

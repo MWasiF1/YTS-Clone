@@ -1,7 +1,7 @@
 .card {
   border: solid;
   border-width: 5px;
-  border-color: white; /* Consider changing based on background color */
+  border-color: white; 
   overflow: hidden;
 }
 
@@ -25,16 +25,16 @@
 }
 
 .btn-primary {
-  background-color: #00FFE7A3;
+  background-color: #00ffe7a3;
   font-size: 1.1em;
   font-weight: 700;
 }
 
 .custombtn {
-  background-color: rgba(27, 27, 35, .4);
+  background-color: rgba(27, 27, 35, 0.4);
   padding: 2px 12px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  font-size: .9em;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.9em;
   color: white;
   font-weight: 500;
 }
@@ -84,7 +84,7 @@ h4 {
 .similer {
   font-weight: 700;
   font-size: 16px;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   margin-bottom: 5px;
 }
 
@@ -111,10 +111,10 @@ h4 {
 }
 
 .category {
-  background-color: rgba(27, 27, 35, .4);
+  background-color: rgba(27, 27, 35, 0.4);
   padding: 2px 12px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  font-size: .9em;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.9em;
   color: white;
   font-weight: 500;
   border-radius: 2px;
@@ -191,21 +191,21 @@ td {
   font-size: 2.5em;
   line-height: 42px;
   font-weight: 700;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .year {
   line-height: 24px;
   font-size: 1.25em;
   font-weight: 700;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .genre {
   line-height: 24px;
   font-size: 1.25em;
   font-weight: 700;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .review {
@@ -214,25 +214,24 @@ td {
 
 .screenshot-container {
   display: flex;
-  flex-wrap: nowrap; 
-  gap: 26px; 
+  flex-wrap: nowrap;
+  gap: 26px;
 }
 
 .screenshot-item {
-  flex: 1; 
-  min-width: 0; 
+  flex: 1;
+  min-width: 0;
 }
 
 .screenshot-item img {
-  width: 100%; /* Ensures the image takes up the full width of its container */
-  height: auto; /* Maintains aspect ratio */
+  width: 100%; 
+  height: auto; 
 }
 
-footer{
+footer {
   background: #171717;
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 1px solid #2f2f2f;
   color: white;
 }
-

@@ -1,63 +1,65 @@
-<div class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50" *ngIf="showRegisterForm">
-    <div class="bg-[#1d1d1d] text-white rounded-lg shadow-lg p-6 w-full max-w-md">
-      <h2 class="text-2xl font-semibold mb-4">Register</h2>
-      <form (ngSubmit)="register()">
-        <div class="mb-4">
-          <label for="username" class="block text-sm font-medium">Username</label>
-          <input
-            type="text"
-            id="username"
-            class="w-full bg-[#2f2f2f] text-white border border-gray-600 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-white"
-            [(ngModel)]="username"
-            name="username"
-          />
-        </div>
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="w-full bg-[#2f2f2f] text-white border border-gray-600 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-white"
-            [(ngModel)]="email"
-            name="email"
-          />
-        </div>
-        <div class="mb-4">
-          <label for="password" class="block text-sm font-medium">Password</label>
-          <input
-            type="password"
-            id="password"
-            class="w-full bg-[#2f2f2f] text-white border border-gray-600 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-white"
-            [(ngModel)]="password"
-            name="password"
-          />
-        </div>
-        <div class="mb-6">
-          <label for="confirmPassword" class="block text-sm font-medium">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            class="w-full bg-[#2f2f2f] text-white border border-gray-600 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-white"
-            [(ngModel)]="confirmPassword"
-            name="confirmPassword"
-          />
-        </div>
-        <div class="flex justify-between items-center">
-          <button
-            type="submit"
-            class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
-          >
-            Register
-          </button>
-          <button
-            type="button"
-            class="text-gray-400 hover:text-white"
-            (click)="closeRegisterForm()"
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
+<div
+  class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+  *ngIf="showRegisterForm"
+>
+  <div class="bg-white text-white rounded-lg shadow-lg p-6 w-full max-w-md">
+    <h2 class="text-2xl font-semibold text-green-400 mb-4">Register</h2>
+    <form (ngSubmit)="register()">
+      <div class="mb-4">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username..."
+          class="w-full bg-white text-green-400 border border-green-400 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-green-600"
+          [(ngModel)]="username"
+          name="username"
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter E-mail Address..."
+          class="w-full bg-white text-green-400 border border-green-400 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-green-600"
+          [(ngModel)]="email"
+          name="email"
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password..."
+          class="w-full bg-white text-green-400 border border-green-400 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-green-600"
+          [(ngModel)]="password"
+          name="password"
+        />
+      </div>
+      <div class="mb-6">
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password..."
+          class="w-full bg-white text-green-400 border border-green-400 rounded-lg py-2 px-3 mt-1 focus:outline-none focus:border-green-600"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+        />
+      </div>
+      <div class="flex justify-between items-center">
+        <button
+          type="submit"
+          class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
+        >
+          Register
+        </button>
+        <button
+          type="button"
+          class="hover:text-green-800 text-2xl pt-4 font-semibold text-green-400 mb-4"
+          (click)="closeRegisterForm()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
   </div>
-  
+</div>

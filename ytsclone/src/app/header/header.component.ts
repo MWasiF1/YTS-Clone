@@ -5,14 +5,14 @@ import { MovieService } from '../movie.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
   showDropdown = false;
   openMenu = false;
-  constructor(private router: Router, private movieService: MovieService) { }
+  constructor(private router: Router, private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.setupMobileMenuToggle();
@@ -28,16 +28,19 @@ export class HeaderComponent implements OnInit {
 
   setupSearch(): void {
     if (this.searchQuery.trim()) {
-      this.movieService.searchMovies(this.searchQuery).subscribe(data => {
-        if (data && data.data && data.data.movies) {
-          this.searchResults = data.data.movies;
-          this.showDropdown = true;
-        } else {
-          console.error('Unexpected API response format:', data);
+      this.movieService.searchMovies(this.searchQuery).subscribe(
+        (data) => {
+          if (data && data.data && data.data.movies) {
+            this.searchResults = data.data.movies;
+            this.showDropdown = true;
+          } else {
+            console.error('Unexpected API response format:', data);
+          }
+        },
+        (error) => {
+          console.error('Error fetching movies:', error);
         }
-      }, error => {
-        console.error('Error fetching movies:', error);
-      });
+      );
     } else {
       this.searchResults = [];
       this.showDropdown = false;
@@ -46,14 +49,16 @@ export class HeaderComponent implements OnInit {
 
   searchMovies(): void {
     if (this.searchQuery.trim()) {
-      this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
+      this.router.navigate(['/search'], {
+        queryParams: { query: this.searchQuery },
+      });
     }
   }
 
   onResultClick(movie: any): void {
     this.searchQuery = movie.title;
     this.showDropdown = false;
-    this.router.navigate(['/movie', movie.id]);  // Navigate to the movie detail page
+    this.router.navigate(['/movie', movie.id]); 
   }
 
   toggleMenu() {
@@ -63,7 +68,7 @@ export class HeaderComponent implements OnInit {
   hideDropdown() {
     setTimeout(() => {
       this.showDropdown = false;
-    }, 100); // Delay to allow click events inside dropdown
+    }, 100); 
   }
 
   @HostListener('document:click', ['$event'])

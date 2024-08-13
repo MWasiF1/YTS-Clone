@@ -1,7 +1,11 @@
 <nav class="bg-[#1d1d1d] border-b-[#2f2f2f]">
   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
     <div class="flex items-center">
-      <img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YTS Logo" class="h-8">
+      <img
+        src="https://yts.mx/assets/images/website/logo-YTS.svg"
+        alt="YTS Logo"
+        class="h-8"
+      />
     </div>
 
     <!-- Desktop menu -->
@@ -17,66 +21,155 @@
           (focus)="showDropdown = true"
           (blur)="hideDropdown()"
         />
-        <!-- Search icon positioned inside the input field -->
-        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-base font-bold text-gray-300"
-             xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25" />
+        <!-- Search icon -->
+        <svg
+          class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-base font-bold text-gray-300"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25"
+          />
         </svg>
 
         <!-- Dropdown for search suggestions -->
-        <ul *ngIf="showDropdown" class="absolute z-10 w-full bg-black text-white rounded-md shadow-lg mt-1 max-h-80 overflow-auto">
-          <li *ngFor="let movie of searchResults.slice(0, 5)" 
-              (click)="onResultClick(movie)"
-              class="px-4 py-2 flex items-center hover:bg-gray-700 cursor-pointer">
-            <img [src]="movie.large_cover_image" alt="{{ movie.title }}" class="w-16 h-24 object-cover rounded-md mr-4">
+        <ul
+          *ngIf="showDropdown"
+          class="absolute z-10 w-full bg-black text-white rounded-md shadow-lg mt-1 max-h-80 overflow-auto"
+        >
+          <li
+            *ngFor="let movie of searchResults.slice(0, 5)"
+            (click)="onResultClick(movie)"
+            class="px-4 py-2 flex items-center hover:bg-gray-700 cursor-pointer"
+          >
+            <img
+              [src]="movie.large_cover_image"
+              alt="{{ movie.title }}"
+              class="w-16 h-24 object-cover rounded-md mr-4"
+            />
             <div class="truncate w-full">
-              <h3 class="text-white text-sm font-semibold truncate">{{ movie.title }}</h3>
+              <h3 class="text-white text-sm font-semibold truncate">
+                {{ movie.title }}
+              </h3>
               <p class="text-gray-400 text-xs">{{ movie.year }}</p>
             </div>
           </li>
-          <li *ngIf="searchResults.length === 0" class="px-4 py-2 text-gray-500">
+          <li
+            *ngIf="searchResults.length === 0"
+            class="px-4 py-2 text-gray-500"
+          >
             No results found
           </li>
         </ul>
       </div>
 
       <!-- Navigation links -->
-      <a href="/home" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Home</a>
-      <a href="/browse" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Browse Movies</a>
-      <a href="/trending" class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium">Trending</a>
-      <a href="/four-k-movies" class="text-green-500 px-2 py-2 rounded-md text-base font-medium">4K</a>
-      <a href="#" (click)="loginForm.openLoginForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Login</a>
-      <a href="#" (click)="registerForm.openRegisterForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium">Register</a>
+      <a
+        href="/home"
+        class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium"
+        >Home</a
+      >
+      <a
+        href="/browse"
+        class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium"
+        >Browse Movies</a
+      >
+      <a
+        href="/trending"
+        class="text-gray-400 hover:text-white px-2 py-2 rounded-md text-base font-medium"
+        >Trending</a
+      >
+      <a
+        href="/four-k-movies"
+        class="text-green-500 px-2 py-2 rounded-md text-base font-medium"
+        >4K</a
+      >
+      <a
+        href="#"
+        (click)="loginForm.openLoginForm(); $event.preventDefault()"
+        class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium"
+        >Login</a
+      >
+      <a
+        href="#"
+        (click)="registerForm.openRegisterForm(); $event.preventDefault()"
+        class="text-white hover:text-gray-400 px-2 py-2 rounded-md text-base font-medium"
+        >Register</a
+      >
     </div>
 
     <!-- Mobile menu button -->
     <div class="md:hidden flex items-center">
-      <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none" (click)="toggleMenu()">
+      <button
+        id="mobile-menu-button"
+        class="text-gray-300 hover:text-white focus:outline-none"
+        (click)="toggleMenu()"
+      >
         <!-- Menu icon for mobile view -->
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        <svg
+          class="h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
         </svg>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu content -->
-  <div id="mobile-menu" class="md:hidden" [ngClass]="{'hidden': !openMenu}">
+  <div id="mobile-menu" class="md:hidden" [ngClass]="{ hidden: !openMenu }">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       <!-- Mobile navigation links -->
-      <a href="/home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-      <a href="/four-k-movies" class="text-green-500 px-3 py-2 rounded-md text-base font-medium">4K</a>
-      <a href="/browse" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Browse Movies</a>
-      <a href="/trending" class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-base font-medium">Trending</a>
-      <a href="#" (click)="loginForm.openLoginForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium">Login</a>
-      <a href="#" (click)="registerForm.openRegisterForm(); $event.preventDefault()" class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium">Register</a>
+      <a
+        href="/home"
+        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+        >Home</a
+      >
+      <a
+        href="/four-k-movies"
+        class="text-green-500 px-3 py-2 rounded-md text-base font-medium"
+        >4K</a
+      >
+      <a
+        href="/browse"
+        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+        >Browse Movies</a
+      >
+      <a
+        href="/trending"
+        class="text-gray-400 hover:text-white px-3 py-2 rounded-md text-base font-medium"
+        >Trending</a
+      >
+      <a
+        href="#"
+        (click)="loginForm.openLoginForm(); $event.preventDefault()"
+        class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium"
+        >Login</a
+      >
+      <a
+        href="#"
+        (click)="registerForm.openRegisterForm(); $event.preventDefault()"
+        class="text-white hover:text-gray-400 px-3 py-2 rounded-md text-base font-medium"
+        >Register</a
+      >
 
       <!-- Search bar for mobile view -->
       <div class="relative">
-        <input 
+        <input
           type="text"
           placeholder="Search movies..."
           class="bg-gray-800 text-white rounded-md px-3 py-2 text-sm w-full"
@@ -86,26 +179,47 @@
           (focus)="showDropdown = true"
           (blur)="hideDropdown()"
         />
-        <svg class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
-             xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25" />
+        <svg
+          class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M11 4a7 7 0 000 14 7 7 0 000-14zM16.65 16.65l5.25 5.25"
+          />
         </svg>
 
         <!-- Dropdown for search suggestions on mobile -->
-        <ul *ngIf="showDropdown" class="absolute z-10 w-full bg-black text-white rounded-md shadow-lg mt-1 max-h-80 overflow-auto">
-          <li *ngFor="let movie of searchResults.slice(0, 5)" 
-              (click)="onResultClick(movie)"
-              class="px-4 py-2 flex items-center hover:bg-gray-700 cursor-pointer">
-            <img [src]="movie.large_cover_image" alt="{{ movie.title }}" class="w-16 h-24 object-cover rounded-md mr-4">
+        <ul
+          *ngIf="showDropdown"
+          class="absolute z-10 w-full bg-black text-white rounded-md shadow-lg mt-1 max-h-80 overflow-auto"
+        >
+          <li
+            *ngFor="let movie of searchResults.slice(0, 5)"
+            (click)="onResultClick(movie)"
+            class="px-4 py-2 flex items-center hover:bg-gray-700 cursor-pointer"
+          >
+            <img
+              [src]="movie.large_cover_image"
+              alt="{{ movie.title }}"
+              class="w-16 h-24 object-cover rounded-md mr-4"
+            />
             <div class="truncate w-full">
-              <h3 class="text-white text-sm font-semibold truncate">{{ movie.title }}</h3>
+              <h3 class="text-white text-sm font-semibold truncate">
+                {{ movie.title }}
+              </h3>
               <p class="text-gray-400 text-xs">{{ movie.year }}</p>
             </div>
           </li>
-          <li *ngIf="searchResults.length === 0" class="px-4 py-2 text-gray-500">
+          <li
+            *ngIf="searchResults.length === 0"
+            class="px-4 py-2 text-gray-500"
+          >
             No results found
           </li>
         </ul>

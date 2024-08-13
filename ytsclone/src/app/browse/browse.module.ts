@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
     BrowseComponent 
   ],
   imports: [
-    CommonModule, // Import to use common Angular directives and pipes
-    RouterModule.forChild([{path:'',component: BrowseComponent}]), // Set up routing for this module
+    CommonModule, 
+    RouterModule.forChild([{path:'',component: BrowseComponent}]), 
     SharedModule,  
     FormsModule
   ],

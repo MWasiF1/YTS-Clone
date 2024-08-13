@@ -6,6 +6,6 @@ footer{
     color: white;
 }
 .movie-card {
-    border-radius: 6px; /* Rounds the corners of the movie card */
-    transition: border-color 0.3s ease-in-out; /* Smooth transition for border color changes */
+    border-radius: 6px;
+    transition: border-color 0.3s ease-in-out; 
   }
