@@ -1,16 +1,21 @@
 <div class="pl-10 py-6 bg-[#171717]">
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-    <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+  <div class="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-center">
+    <app-movie-card 
+      *ngFor="let movie of movies" 
+      [movie]="movie" 
+      class="w-full sm:w-3/4 md:w-2/3 lg:w-full">
+    </app-movie-card>
   </div>
 </div>
 
-<footer>
+<footer class="hidden lg:block">
   <div class="container mx-auto px-4">
-      <div class="flex flex-col items-center">
-          <span class="text-center">YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies - Requests - Login - Language</span>
-          <span class="py-2 text-center">By using this site you agree to and accept our User Agreement, which can be read here.</span>
-      </div>
+    <div class="flex flex-col items-center">
+      <span class="text-center">YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies - Requests - Login - Language</span>
+      <span class="py-2 text-center">By using this site you agree to and accept our User Agreement, which can be read here.</span>
+    </div>
   </div>
 </footer>
+
 
 

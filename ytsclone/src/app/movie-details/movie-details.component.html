@@ -3,17 +3,17 @@
     <!-- Movie Poster Section -->
     <div class="flex flex-col md:flex-row gap-4 w-full max-w-screen-lg">
       <!-- Center the Movie Poster and Buttons -->
-      <div class="flex-shrink-0 md:w-1/4 mx-auto">
-        <div class="card h-70 w-60 rounded border-4 border-white">
+      <div class="flex-shrink-0 w-full md:w-1/4 mx-auto">
+        <div class="card h-70 w-60 mx-auto md:mx-0 rounded border-4 border-white">
           <img
             class="poster object-cover"
             [src]="movie?.medium_cover_image"
             alt="Movie Poster"
           />
         </div>
-        <div class="flex flex-col w-60 mt-2">
+        <div class="flex flex-col w-60 mx-auto md:mx-0 mt-2">
           <button
-            class="btn bg-green-500 text-white pr-4 font-bold border-0 py-2 rounded mt-2 hidden lg:block"
+            class="btn bg-[--green-color] text-white pr-4 font-bold border-0 py-2 rounded mt-2 hidden lg:block"
           >
             <i class="bi bi-download"></i>&nbsp;&nbsp;Download
           </button>
@@ -24,16 +24,20 @@
           </button>
         </div>
       </div>
-
+    
       <!-- Center the Movie Details -->
-      <div class="flex-1 lg:mx-5 pl-5">
-        <div class="hidden md:block">
-          <h1 class="title text-2xl font-bold mb-4">{{ movie?.title }}</h1>
-          <h4 class="year text-xl mb-0">{{ movie?.year }}</h4>
-          <h4 class="genre text-lg mb-4">{{ movie?.genres?.join(", ") }}</h4>
+      <div class="flex-1 lg:mx-5 px-4 md:px-20">
+        <div class="block text-center md:text-left">
+          <h1 class="title text-xl md:text-2xl font-bold mb-4">
+            {{ movie?.title }}
+          </h1>
+          <h4 class="year text-lg md:text-xl mb-0">{{ movie?.year }}</h4>
+          <h4 class="genre text-md md:text-lg mb-4">
+            {{ movie?.genres?.join(", ") }}
+          </h4>
         </div>
-        <div class="hidden lg:block text-white mt-4">
-          <em class="d-none lg:inline avail">Available in: </em>
+        <div class="hidden lg:block text-white mt-4 text-center md:text-left">
+          <em class="avail">Available in: </em>
           <button class="btn border mr-2 text-sm rounded">720p.WEB</button>
           <button class="btn border rounded text-sm mx-1">1080p.WEB</button>
         </div>
@@ -41,15 +45,14 @@
           <div class="hidden lg:block">
             <span class="text-sm text-white">WEB: same quality as BluRay</span>
           </div>
-          <div class="my-4">
+          <div class="my-4 text-center md:text-left">
             <button class="btn border text-sm rounded text-white px-1 py-1">
               <i class="bi bi-download"></i>&nbsp;Request Subtitles
             </button>
           </div>
-          <div class="flex flex-col">
+          <div class="flex flex-col items-center md:items-start">
             <div class="flex items-center mb-2">
               <i class="bi bi-heart-fill w-6 mr-2"></i>
-              <!-- Reduced width and margin -->
               <h4 class="likes text-xl">{{ movie?.like_count }}</h4>
             </div>
             <div class="flex items-center mb-2">
@@ -74,9 +77,7 @@
                 />
               </span>
               <h4 class="likes m-0 text-xl">68%</h4>
-              <span class="details_1 text-sm hidden md:inline"
-                >&nbsp;AUDIENCE</span
-              >
+              <span class="details_1 text-sm hidden md:inline">&nbsp;AUDIENCE</span>
             </div>
             <div class="flex items-center mb-2">
               <span class="w-8 mr-4">
@@ -93,18 +94,19 @@
               ><span class="details_1 text-sm">16.1k</span>
             </div>
             <div class="flex flex-col gap-2 md:block lg:hidden">
-              <i class="d-none lg:inline avail">Available in: </i>
+              <i class="avail">Available in: </i>
               <button class="btn border rounded py-0">720p.WEB</button>
               <button class="btn border rounded mx-2 py-0">1080p.WEB</button>
             </div>
           </div>
         </div>
       </div>
-
+    
       <!-- Center the Similar Movies Section -->
-      <div class="lg:w-1/4 text-white mt-2 mx-auto">
-        <p class="text-lg font-semibold mb-2">Similar Movies</p>
-
+      <div class="w-full lg:w-1/4 text-white mt-2 mx-auto hidden lg:block">
+        <p class="text-lg font-semibold mb-2 text-center lg:text-left">
+          Similar Movies
+        </p>
         <div class="grid grid-cols-2 gap-2">
           <div *ngFor="let similarMovie of suggestions" class="p-2">
             <a [routerLink]="['/movie-details', similarMovie.id]">
@@ -118,10 +120,10 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Additional Sections -->
     <div class="mt-8 w-full max-w-screen-lg">
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap justify-center md:justify-start">
         <a
           class="bg-transparent font-bold text-white py-1 px-2 text-sm border border-gray-400 rounded mr-2 mb-2"
           href=""
@@ -149,6 +151,8 @@
         >
       </div>
     </div>
+    
+    
 
     <div class="ml-12 mt-8 screenshot-container">
       <div class="screenshot-item">
@@ -257,18 +261,10 @@
             <!-- 720p Row -->
             <tr
               *ngIf="currentResolution === '720p'"
-              class="w-9/12 mx-auto h-32"
+              class="w-9/12 mx-auto h-26"
             >
               <!-- First Row of Four Columns -->
-              <td class="relative px-4 py-8 text-center">
-                <div
-                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
-                  style="margin-left: 0.5rem; margin-right: 0.5rem"
-                ></div>
-                <i class="bi bi-clock"></i>
-                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
-              </td>
-              <td class="relative px-4 py-8 text-center">
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -276,7 +272,17 @@
                 <i class="bi bi-file-earmark-text-fill"></i>
                 <span class="font-bold text-sm ml-2">1.5 GB</span>
               </td>
-              <td class="relative px-4 py-8 text-center">
+
+              <td class="relative px-4 py-4 text-center">
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-clock"></i>
+                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
+              </td>
+
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -284,7 +290,7 @@
                 <i class="bi bi-eye"></i>
                 <span class="font-bold text-sm ml-2">PG-14</span>
               </td>
-              <td class="relative px-4 py-8 text-center">
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -293,28 +299,145 @@
                 ><span class="font-bold text-sm text-green-500 ml-2"
                   >Subtitles</span
                 >
-                <i class="bi bi-flag"></i>
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#d80027" r="256" />
+                    <path
+                      d="m400.696 190.009h-92.726c5.724-5.994 9.247-14.109 9.247-23.052 0-18.441-14.95-33.391-33.391-33.391-11.618 0-21.845 5.936-27.826 14.937-5.981-9.001-16.209-14.937-27.826-14.937-18.441 0-33.391 14.95-33.391 33.391 0 8.943 3.523 17.059 9.247 23.052h-92.725c0 24.589 21.417 44.521 46.004 44.521h-1.484c0 24.59 19.933 44.523 44.523 44.523 0 7.964 2.099 15.43 5.763 21.894l-36.93 36.931 28.334 28.332 40.192-40.191c1.574.577 3.203 1.04 4.885 1.355l-24.287 54.835 37.695 40.748 37.695-40.75-24.287-54.835c1.683-.315 3.311-.777 4.885-1.355l40.192 40.191 28.334-28.333-36.931-36.931c3.665-6.463 5.764-13.93 5.764-21.894 24.589 0 44.522-19.932 44.522-44.523h-1.483c24.587.002 46.005-19.929 46.005-44.518z"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m509.833 222.609h-309.484-.001v-216.524c-23.658 5.246-46.087 13.749-66.783 25.042v191.48.001h-131.398c-1.425 10.931-2.167 22.075-2.167 33.392s.742 22.461 2.167 33.391h131.397.001v191.481c20.696 11.292 43.125 19.797 66.783 25.042v-216.52-.002h309.485c1.423-10.931 2.167-22.075 2.167-33.392s-.744-22.461-2.167-33.391z"
+                      fill="#0052b4"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m512 256c0-110.071-69.472-203.906-166.957-240.077v480.155c97.485-36.172 166.957-130.007 166.957-240.078z"
+                      fill="#d80027"
+                    />
+                    <path
+                      d="m0 256c0 110.071 69.473 203.906 166.957 240.077v-480.154c-97.484 36.171-166.957 130.006-166.957 240.077z"
+                      fill="#0052b4"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m512 256c0-110.071-69.472-203.906-166.957-240.077v480.155c97.485-36.172 166.957-130.007 166.957-240.078z"
+                      fill="#d80027"
+                    />
+                    <path
+                      d="m0 256c0 110.071 69.472 203.906 166.957 240.077v-480.154c-97.485 36.171-166.957 130.006-166.957 240.077z"
+                      fill="#6da544"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                </div>
               </td>
             </tr>
 
             <tr
               *ngIf="currentResolution === '720p'"
-              class="w-9/12 mx-auto h-32"
+              class="w-9/12 mx-auto h-26"
             >
               <!-- Second Row of Four Columns -->
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-chevron-bar-expand"></i>
                 <span class="font-bold text-sm ml-2">1280*536</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-megaphone"></i>
                 <span class="font-bold ml-2 text-sm">English</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-collection-play-fill"></i
                 ><span class="font-bold ml-2 text-sm">23.976 fps</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <span class="font-bold text-sm">Seeds</span>
                 <span class="text-green-500 ml-2 font-bold text-sm">100+</span>
               </td>
@@ -323,18 +446,10 @@
             <!-- 1080p Row -->
             <tr
               *ngIf="currentResolution === '1080p'"
-              class="w-9/12 mx-auto h-32"
+              class="w-9/12 mx-auto h-26"
             >
               <!-- First Row of Four Columns -->
-              <td class="relative px-4 py-8 text-center">
-                <div
-                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
-                  style="margin-left: 0.5rem; margin-right: 0.5rem"
-                ></div>
-                <i class="bi bi-clock"></i>
-                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
-              </td>
-              <td class="relative px-4 py-8 text-center">
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -342,7 +457,17 @@
                 <i class="bi bi-file-earmark-text-fill"></i>
                 <span class="font-bold text-sm ml-2">2.5 GB</span>
               </td>
-              <td class="relative px-4 py-8 text-center">
+
+              <td class="relative px-4 py-4 text-center">
+                <div
+                  class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
+                  style="margin-left: 0.5rem; margin-right: 0.5rem"
+                ></div>
+                <i class="bi bi-clock"></i>
+                <span class="font-bold text-sm ml-2">1 hr 50 min</span>
+              </td>
+
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -350,7 +475,7 @@
                 <i class="bi bi-eye"></i>
                 <span class="font-bold text-sm ml-2">PG-14</span>
               </td>
-              <td class="relative px-4 py-8 text-center">
+              <td class="relative px-4 py-4 text-center">
                 <div
                   class="absolute bottom-2 left-0 right-0 h-0.5 bg-gray-500"
                   style="margin-left: 0.5rem; margin-right: 0.5rem"
@@ -359,28 +484,145 @@
                 ><span class="font-bold text-sm text-green-500 ml-2"
                   >Subtitles</span
                 >
-                <i class="bi bi-flag"></i>
+                <div class="flex flex-row gap-1 items-center justify-center">
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#d80027" r="256" />
+                    <path
+                      d="m400.696 190.009h-92.726c5.724-5.994 9.247-14.109 9.247-23.052 0-18.441-14.95-33.391-33.391-33.391-11.618 0-21.845 5.936-27.826 14.937-5.981-9.001-16.209-14.937-27.826-14.937-18.441 0-33.391 14.95-33.391 33.391 0 8.943 3.523 17.059 9.247 23.052h-92.725c0 24.589 21.417 44.521 46.004 44.521h-1.484c0 24.59 19.933 44.523 44.523 44.523 0 7.964 2.099 15.43 5.763 21.894l-36.93 36.931 28.334 28.332 40.192-40.191c1.574.577 3.203 1.04 4.885 1.355l-24.287 54.835 37.695 40.748 37.695-40.75-24.287-54.835c1.683-.315 3.311-.777 4.885-1.355l40.192 40.191 28.334-28.333-36.931-36.931c3.665-6.463 5.764-13.93 5.764-21.894 24.589 0 44.522-19.932 44.522-44.523h-1.483c24.587.002 46.005-19.929 46.005-44.518z"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m509.833 222.609h-309.484-.001v-216.524c-23.658 5.246-46.087 13.749-66.783 25.042v191.48.001h-131.398c-1.425 10.931-2.167 22.075-2.167 33.392s.742 22.461 2.167 33.391h131.397.001v191.481c20.696 11.292 43.125 19.797 66.783 25.042v-216.52-.002h309.485c1.423-10.931 2.167-22.075 2.167-33.392s-.744-22.461-2.167-33.391z"
+                      fill="#0052b4"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m512 256c0-110.071-69.472-203.906-166.957-240.077v480.155c97.485-36.172 166.957-130.007 166.957-240.078z"
+                      fill="#d80027"
+                    />
+                    <path
+                      d="m0 256c0 110.071 69.473 203.906 166.957 240.077v-480.154c-97.484 36.171-166.957 130.006-166.957 240.077z"
+                      fill="#0052b4"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+
+                  <svg
+                    class="w-6 h-6"
+                    enable-background="new 0 0 512 512"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="256" cy="256" fill="#f0f0f0" r="256" />
+                    <path
+                      d="m512 256c0-110.071-69.472-203.906-166.957-240.077v480.155c97.485-36.172 166.957-130.007 166.957-240.078z"
+                      fill="#d80027"
+                    />
+                    <path
+                      d="m0 256c0 110.071 69.472 203.906 166.957 240.077v-480.154c-97.485 36.171-166.957 130.006-166.957 240.077z"
+                      fill="#6da544"
+                    />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                </div>
               </td>
             </tr>
 
             <tr
               *ngIf="currentResolution === '1080p'"
-              class="w-9/12 mx-auto h-32"
+              class="w-9/12 mx-auto h-26"
             >
               <!-- Second Row of Four Columns -->
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-chevron-bar-expand"></i>
                 <span class="font-bold text-sm ml-2">1920*804</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-megaphone"></i>
                 <span class="font-bold ml-2 text-sm">English</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <i class="bi bi-collection-play-fill"></i
                 ><span class="font-bold ml-2 text-sm">23.976 fps</span>
               </td>
-              <td class="px-4 py-8 text-center">
+              <td class="px-4 py-5 text-center">
                 <span class="font-bold text-sm">Seeds</span>
               </td>
             </tr>
@@ -399,7 +641,6 @@
         <span class="px-4"><i class="bi bi-chat-left-fill"></i></span>Comments
       </h3>
       <div class="space-y-4">
-        
         <div
           class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg"
         >
@@ -420,7 +661,7 @@
             </div>
           </div>
         </div>
-        
+
         <div
           class="flex items-start space-x-4 bg-[#171717] py-4 px-4 rounded-lg"
         >
@@ -452,7 +693,6 @@
         <span class="px-4"><i class="bi bi-star-fill"></i></span>Reviews
       </h3>
       <div class="space-y-4">
-        
         <div class="border-b border-gray-400 pb-4">
           <p class="font-bold text-gray-400">
             Walton
@@ -467,7 +707,7 @@
             some plot twists felt a bit predictable.
           </p>
         </div>
-        
+
         <div class="pb-4">
           <p class="font-bold text-gray-400">
             Jack Reacher
@@ -485,19 +725,21 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col items-center">
-        <span class="text-center"
-          >YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies
-          - Requests - Login - Language</span
-        >
-        <span class="py-2 text-center"
-          >By using this site you agree to and accept our User Agreement, which
-          can be read here.</span
-        >
-      </div>
-    </div>
-  </footer>
 </div>
+
+<footer>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-center">
+      <span class="text-center"
+        >YTS © 2011 - 2023 - Blog - DMCA - API - RSS - Contact - Browse Movies
+        - Requests - Login - Language</span
+      >
+      <span class="py-2 text-center"
+        >By using this site you agree to and accept our User Agreement, which
+        can be read here.</span
+      >
+    </div>
+  </div>
+</footer>
+
+
